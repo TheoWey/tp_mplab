@@ -11,37 +11,41 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_12.o
+$C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_12.o
 end_init CODE 0 0 0 3 2 1
 $dist/default/debug\project.X.debug.o
-cinit CODE 0 7F3 7F3 D 2 1
-text1 CODE 0 7BB 7BB 38 2 1
-idataCOMMON CODE 0 7A3 7A3 1 2 1
-maintext CODE 0 7A4 7A4 17 2 1
-cstackCOMMON COMMON 1 70 70 A 1 1
+cinit CODE 0 7F1 7F1 F 2 1
+text1 CODE 0 709 709 8 2 1
+text2 CODE 0 74D 74D 48 2 1
+text3 CODE 0 711 711 3C 2 1
+maintext CODE 0 795 795 5C 2 1
+cstackCOMMON COMMON 1 70 70 D 1 1
+cstackBANK0 BANK0 1 24 24 3 1 1
+bssBANK0 BANK0 1 20 20 4 1 1
+idataBANK0 CODE 0 708 708 1 2 1
 strings STRING 0 3 3 8 2 1
-dataCOMMON COMMON 1 7D 7D 1 1 1
-bssCOMMON COMMON 1 7A 7A 3 1 1
+dataBANK0 BANK0 1 27 27 1 1 1
+bssCOMMON COMMON 1 7D 7D 1 1 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
 # is described on a single line as follows:
 #    <class name> <range> <delta>
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
-RAM 20-6F 1
+RAM 28-6F 1
 RAM A0-EF 1
 RAM 110-16F 1
 RAM 190-1EF 1
-BANK0 20-6F 1
+BANK0 28-6F 1
 BANK1 A0-EF 1
 BANK2 110-16F 1
 BANK3 190-1EF 1
-CONST B-7A2 2
+CONST B-707 2
 CONST 800-1FFF 2
-ENTRY B-7A2 2
+ENTRY B-707 2
 ENTRY 800-1FFF 2
 IDLOC 2000-2003 2
-CODE B-7A2 2
+CODE B-707 2
 CODE 800-1FFF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
@@ -49,9 +53,9 @@ SFR2 100-10F 1
 SFR3 180-18F 1
 CONFIG 2007-2007 2
 EEDATA 2100-21FF 2
-STRCODE B-7A2 2
+STRCODE B-707 2
 STRCODE 800-1FFF 2
-STRING B-7A2 2
+STRING B-707 2
 STRING 800-1FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
@@ -67,39 +71,71 @@ STRING 800-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/debug\project.X.debug.o
-7F3 cinit CODE >387:C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_1.s
-7F3 cinit CODE >390:C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_1.s
-7F3 cinit CODE >416:C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_1.s
-7F8 cinit CODE >417:C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_1.s
-7F9 cinit CODE >421:C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_1.s
-7FA cinit CODE >422:C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_1.s
-7FB cinit CODE >423:C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_1.s
-7FC cinit CODE >429:C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_1.s
-7FC cinit CODE >431:C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_1.s
-7FD cinit CODE >432:C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_1.s
-7BB text1 CODE >21:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
-7BC text1 CODE >28:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
-7BF text1 CODE >29:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
-7C4 text1 CODE >30:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
-7CA text1 CODE >31:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
-7CC text1 CODE >33:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
-7D1 text1 CODE >23:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
-7D3 text1 CODE >35:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
-7D4 text1 CODE >36:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
-7D5 text1 CODE >37:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
-7DA text1 CODE >40:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
-7DF text1 CODE >41:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
-7E1 text1 CODE >43:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
-7E6 text1 CODE >22:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
-7E9 text1 CODE >47:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
-7EB text1 CODE >47:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
-7EE text1 CODE >50:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
-7F2 text1 CODE >51:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
-7A4 maintext CODE >12:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
-7A4 maintext CODE >15:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
-7A5 maintext CODE >16:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
-7AB maintext CODE >17:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
-7B8 maintext CODE >19:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+7F1 cinit CODE >401:C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_1.s
+7F1 cinit CODE >404:C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_1.s
+7F1 cinit CODE >439:C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_1.s
+7F6 cinit CODE >440:C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_1.s
+7F7 cinit CODE >444:C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_1.s
+7F8 cinit CODE >445:C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_1.s
+7F9 cinit CODE >446:C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_1.s
+7FA cinit CODE >447:C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_1.s
+7FB cinit CODE >450:C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_1.s
+7FC cinit CODE >456:C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_1.s
+7FC cinit CODE >458:C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_1.s
+7FD cinit CODE >459:C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_1.s
+711 text3 CODE >61:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+712 text3 CODE >68:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+715 text3 CODE >69:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+71A text3 CODE >70:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+720 text3 CODE >71:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+724 text3 CODE >73:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+72A text3 CODE >63:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+72C text3 CODE >75:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+72D text3 CODE >76:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+72E text3 CODE >77:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+733 text3 CODE >80:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+738 text3 CODE >81:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+73C text3 CODE >83:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+742 text3 CODE >62:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+745 text3 CODE >87:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+747 text3 CODE >87:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+74A text3 CODE >90:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+74C text3 CODE >91:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+74D text2 CODE >45:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+74D text2 CODE >47:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+752 text2 CODE >48:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+755 text2 CODE >50:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+758 text2 CODE >50:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+76D text2 CODE >51:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+770 text2 CODE >51:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+784 text2 CODE >53:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+78C text2 CODE >54:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+794 text2 CODE >55:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+709 text1 CODE >57:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+709 text1 CODE >58:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+710 text1 CODE >59:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+795 maintext CODE >12:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+795 maintext CODE >15:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+799 maintext CODE >16:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+79A maintext CODE >19:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+79E maintext CODE >20:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+7A0 maintext CODE >22:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+7A9 maintext CODE >23:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+7AD maintext CODE >23:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+7B1 maintext CODE >24:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+7B3 maintext CODE >24:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+7B7 maintext CODE >25:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+7BF maintext CODE >26:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+7BF maintext CODE >27:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+7C4 maintext CODE >28:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+7C6 maintext CODE >29:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+7C8 maintext CODE >29:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+7CC maintext CODE >30:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+7CE maintext CODE >33:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+7D4 maintext CODE >35:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+7E1 maintext CODE >36:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+7E2 maintext CODE >37:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
+7E9 maintext CODE >38:A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -113,58 +149,65 @@ $dist/default/debug\project.X.debug.o
 # is the name of the object file in which the symbol was defined.
 %SYMTAB
 ___latbits 2 0 ABS 0 - dist/default/debug\project.X.debug.o
+__LdataBANK0 0 0 ABS 0 dataBANK0 -
 __Hspace_0 800 0 ABS 0 - -
 __Hspace_1 7E 0 ABS 0 - -
 __Hspace_2 0 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
+__HidataBANK0 0 0 ABS 0 idataBANK0 -
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __L__absolute__ 0 0 ABS 0 __absolute__ -
 __Hstrings 0 0 ABS 0 strings -
-___sp 0 0 STACK 2 stack C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_12.o
-_main F48 0 CODE 0 maintext dist/default/debug\project.X.debug.o
+___sp 0 0 STACK 2 stack C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_12.o
+_main F2A 0 CODE 0 maintext dist/default/debug\project.X.debug.o
 btemp 7E 0 ABS 0 - dist/default/debug\project.X.debug.o
-___stack_hi 0 0 STACK 2 stack C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_12.o
-___stack_lo 0 0 STACK 2 stack C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_12.o
-start 0 0 CODE 0 init C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_12.o
+___stack_hi 0 0 STACK 2 stack C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_12.o
+___stack_lo 0 0 STACK 2 stack C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_12.o
+start 0 0 CODE 0 init C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_12.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
+__LidataBANK0 0 0 ABS 0 idataBANK0 -
 __Hpowerup 0 0 CODE 0 powerup -
-__HdataCOMMON 0 0 ABS 0 dataCOMMON -
-intlevel0 0 0 ENTRY 0 functab C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_12.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_12.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_12.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_12.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_12.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_12.o
+read_button@up_mem 22 0 BANK0 1 bssBANK0 dist/default/debug\project.X.debug.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_12.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_12.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_12.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_12.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_12.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_12.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
+read_button@menu_read 75 0 COMMON 1 cstackCOMMON dist/default/debug\project.X.debug.o
 wtemp0 7E 0 ABS 0 - dist/default/debug\project.X.debug.o
 __Hfunctab 0 0 ENTRY 0 functab -
 __end_ofchenillard@MAX_CHENILLARD 16 0 STRING 0 strings dist/default/debug\project.X.debug.o
 __Hclrtext 0 0 ABS 0 clrtext -
-__pidataCOMMON F46 0 CODE 0 idataCOMMON dist/default/debug\project.X.debug.o
-__LdataCOMMON 0 0 ABS 0 dataCOMMON -
+main@switchs 24 0 BANK0 1 cstackBANK0 dist/default/debug\project.X.debug.o
 __Lmaintext 0 0 ABS 0 maintext -
-___stackhi 0 0 ABS 0 - C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_12.o
-___stacklo 0 0 ABS 0 - C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_12.o
-__LidataCOMMON 0 0 ABS 0 idataCOMMON -
-start_initialization FE6 0 CODE 0 cinit dist/default/debug\project.X.debug.o
+___stackhi 0 0 ABS 0 - C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_12.o
+___stacklo 0 0 ABS 0 - C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_12.o
+start_initialization FE2 0 CODE 0 cinit dist/default/debug\project.X.debug.o
 chenillard@right 71 0 COMMON 1 cstackCOMMON dist/default/debug\project.X.debug.o
-___int_sp 0 0 STACK 2 stack C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_12.o
+read_button@menu 71 0 COMMON 1 cstackCOMMON dist/default/debug\project.X.debug.o
+__pcstackBANK0 24 0 BANK0 1 cstackBANK0 dist/default/debug\project.X.debug.o
+___int_sp 0 0 STACK 2 stack C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_12.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
 __Hbank3 0 0 ABS 0 bank3 -
 __Hcinit 1000 0 CODE 0 cinit -
+_read_button E9A 0 CODE 0 text2 dist/default/debug\project.X.debug.o
 __Hstack 0 0 STACK 2 stack -
 __stringbase 10 0 STRING 0 strings dist/default/debug\project.X.debug.o
-chenillard@chenillard 7B 0 COMMON 1 bssCOMMON dist/default/debug\project.X.debug.o
+chenillard@chenillard 7D 0 COMMON 1 bssCOMMON dist/default/debug\project.X.debug.o
 __Hmaintext 0 0 ABS 0 maintext -
+read_button@up 70 0 COMMON 1 cstackCOMMON dist/default/debug\project.X.debug.o
 __Hcommon 0 0 ABS 0 common -
 __Lbank0 0 0 ABS 0 bank0 -
 __Lbank1 0 0 ABS 0 bank1 -
 __Lbank2 0 0 ABS 0 bank2 -
 __Lbank3 0 0 ABS 0 bank3 -
-__Lcinit FE6 0 CODE 0 cinit -
+__Lcinit FE2 0 CODE 0 cinit -
 __Lstack 0 0 STACK 2 stack -
+_PORTBbits 6 0 ABS 0 - dist/default/debug\project.X.debug.o
 __Habs1 0 0 ABS 0 abs1 -
 __Hcode 0 0 ABS 0 code -
 __Hheap 0 0 HEAP 7 heap -
@@ -185,26 +228,37 @@ __Lsfr2 0 0 ABS 0 sfr2 -
 __Lsfr3 0 0 ABS 0 sfr3 -
 __Lsivt 0 0 CODE 0 sivt -
 __Ltext 0 0 ABS 0 text -
+__LcstackBANK0 0 0 ABS 0 cstackBANK0 -
 __HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
 __S0 800 0 ABS 0 - -
 __S1 7E 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
-__HidataCOMMON 0 0 ABS 0 idataCOMMON -
-chenillard@max 7A 0 COMMON 1 bssCOMMON dist/default/debug\project.X.debug.o
+chenillard@max 20 0 BANK0 1 bssBANK0 dist/default/debug\project.X.debug.o
+read_switch@switchs 70 0 COMMON 1 cstackCOMMON dist/default/debug\project.X.debug.o
 __Lintentry 0 0 CODE 0 intentry -
+read_button@up_read 74 0 COMMON 1 cstackCOMMON dist/default/debug\project.X.debug.o
 __stringtab 6 0 STRING 0 strings dist/default/debug\project.X.debug.o
-reset_vec 0 0 CODE 0 reset_vec C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_12.o
-_chenillard F76 0 CODE 0 text1 dist/default/debug\project.X.debug.o
-__pmaintext F48 0 CODE 0 maintext dist/default/debug\project.X.debug.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_12.o
+_read_switch E12 0 CODE 0 text1 dist/default/debug\project.X.debug.o
+_chenillard E22 0 CODE 0 text3 dist/default/debug\project.X.debug.o
+_read_button$97 72 0 COMMON 1 cstackCOMMON dist/default/debug\project.X.debug.o
+_read_button$98 73 0 COMMON 1 cstackCOMMON dist/default/debug\project.X.debug.o
+__pdataBANK0 27 0 BANK0 1 dataBANK0 dist/default/debug\project.X.debug.o
+__LbssBANK0 0 0 ABS 0 bssBANK0 -
+__pmaintext F2A 0 CODE 0 maintext dist/default/debug\project.X.debug.o
 __Lcommon 0 0 ABS 0 common -
-main@menu 79 0 COMMON 1 cstackCOMMON dist/default/debug\project.X.debug.o
+main@menu 26 0 BANK0 1 cstackBANK0 dist/default/debug\project.X.debug.o
+main@right 23 0 BANK0 1 bssBANK0 dist/default/debug\project.X.debug.o
+main@speed 27 0 BANK0 1 dataBANK0 dist/default/debug\project.X.debug.o
 __end_of__stringtab 12 0 STRING 0 strings dist/default/debug\project.X.debug.o
-__end_of_chenillard FE6 0 CODE 0 text1 dist/default/debug\project.X.debug.o
+__end_of_chenillard E9A 0 CODE 0 text3 dist/default/debug\project.X.debug.o
 __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
 __Lspace_2 0 0 ABS 0 - -
 __Lspace_3 0 0 ABS 0 - -
-__pbssCOMMON 7A 0 COMMON 1 bssCOMMON dist/default/debug\project.X.debug.o
+main@up 25 0 BANK0 1 cstackBANK0 dist/default/debug\project.X.debug.o
+__pbssCOMMON 7D 0 COMMON 1 bssCOMMON dist/default/debug\project.X.debug.o
+__HcstackBANK0 0 0 ABS 0 cstackBANK0 -
 __Lend_init 0 0 CODE 0 end_init -
 __LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
 __end_ofchenillard@MIN_CHENILLARD 14 0 STRING 0 strings dist/default/debug\project.X.debug.o
@@ -212,28 +266,39 @@ end_of_initialization FF8 0 CODE 0 cinit dist/default/debug\project.X.debug.o
 __Hintentry 0 0 CODE 0 intentry -
 __Lstrings 0 0 ABS 0 strings -
 __Hreset_vec 0 0 CODE 0 reset_vec -
-__ptext1 F76 0 CODE 0 text1 dist/default/debug\project.X.debug.o
+__HbssBANK0 0 0 ABS 0 bssBANK0 -
+__ptext1 E12 0 CODE 0 text1 dist/default/debug\project.X.debug.o
+__ptext2 E9A 0 CODE 0 text2 dist/default/debug\project.X.debug.o
+__ptext3 E22 0 CODE 0 text3 dist/default/debug\project.X.debug.o
 __Lpowerup 0 0 CODE 0 powerup -
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
 __H__absolute__ 0 0 ABS 0 __absolute__ -
+__end_of_read_button F2A 0 CODE 0 text2 dist/default/debug\project.X.debug.o
 __Lreset_vec 0 0 CODE 0 reset_vec -
-___heap_hi 0 0 ABS 0 - C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_12.o
-___heap_lo 0 0 ABS 0 - C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_12.o
+___heap_hi 0 0 ABS 0 - C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_12.o
+___heap_lo 0 0 ABS 0 - C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_12.o
 __end_of__initialization FF8 0 CODE 0 cinit dist/default/debug\project.X.debug.o
 __Lfunctab 0 0 ENTRY 0 functab -
+read_button@menu_mem 21 0 BANK0 1 bssBANK0 dist/default/debug\project.X.debug.o
+__pidataBANK0 E10 0 CODE 0 idataBANK0 dist/default/debug\project.X.debug.o
 __Lclrtext 0 0 ABS 0 clrtext -
 __pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/debug\project.X.debug.o
 __Hend_init 6 0 CODE 0 end_init -
-__end_of_main F76 0 CODE 0 maintext dist/default/debug\project.X.debug.o
+__end_of_main FE2 0 CODE 0 maintext dist/default/debug\project.X.debug.o
+_PORTC 7 0 ABS 0 - dist/default/debug\project.X.debug.o
 _PORTD 8 0 ABS 0 - dist/default/debug\project.X.debug.o
+_TRISB 86 0 ABS 0 - dist/default/debug\project.X.debug.o
+_TRISC 87 0 ABS 0 - dist/default/debug\project.X.debug.o
 _TRISD 88 0 ABS 0 - dist/default/debug\project.X.debug.o
 __Hram 0 0 ABS 0 ram -
 __Lram 0 0 ABS 0 ram -
-__initialization FE6 0 CODE 0 cinit dist/default/debug\project.X.debug.o
-__pdataCOMMON 7D 0 COMMON 1 dataCOMMON dist/default/debug\project.X.debug.o
+__HdataBANK0 0 0 ABS 0 dataBANK0 -
+__initialization FE2 0 CODE 0 cinit dist/default/debug\project.X.debug.o
+__pbssBANK0 20 0 BANK0 1 bssBANK0 dist/default/debug\project.X.debug.o
+__end_of_read_switch E22 0 CODE 0 text1 dist/default/debug\project.X.debug.o
 __pstrings 6 0 STRING 0 strings dist/default/debug\project.X.debug.o
-___int_stack_hi 0 0 STACK 2 stack C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_12.o
-___int_stack_lo 0 0 STACK 2 stack C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\driver_tmp_12.o
+___int_stack_hi 0 0 STACK 2 stack C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_12.o
+___int_stack_lo 0 0 STACK 2 stack C:\Users\weyth\AppData\Local\Temp\xcAsa1k.\driver_tmp_12.o
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -259,12 +324,15 @@ ___int_stack_lo 0 0 STACK 2 stack C:\Users\weyth\AppData\Local\Temp\xcAs6qk.\dri
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
-cinit 0 7F3 FE6 D 2
-text1 0 7BB F76 38 2
-idataCOMMON 0 7A3 F46 1 2
-maintext 0 7A4 F48 17 2
+cinit 0 7F1 FE2 F 2
+text1 0 709 E12 8 2
+text2 0 74D E9A 48 2
+text3 0 711 E22 3C 2
+maintext 0 795 F2A 5C 2
 cstackCOMMON 1 70 70 E 1
 reset_vec 0 0 0 3 2
+bssBANK0 1 20 20 8 1
+idataBANK0 0 708 E10 1 2
 strings 0 3 6 8 2
 # %NOTES Section
 # This section contains data of all the note-psects.  The beginning of the section

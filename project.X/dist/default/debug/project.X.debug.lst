@@ -1,541 +1,953 @@
 
 
 Microchip MPLAB XC8 Assembler V3.00 build 20241204225717 
-                                                                                               Fri Apr 04 14:59:40 2025
+                                                                                               Fri Apr 04 15:31:58 2025
 
 Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1 
      1                           	processor	16F877A
      2                           	pagewidth 120
      3                           	opt	flic
-     4                           	psect	idataCOMMON,global,class=CODE,space=0,delta=2,noexec
+     4                           	psect	idataBANK0,global,class=CODE,space=0,delta=2,noexec
      5                           	psect	strings,global,class=STRING,space=0,delta=2,noexec
      6                           	psect	cinit,global,class=CODE,space=0,merge=1,delta=2
      7                           	psect	bssCOMMON,global,class=COMMON,space=1,delta=1,noexec
-     8                           	psect	dataCOMMON,global,class=COMMON,space=1,delta=1,noexec
-     9                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
-    10                           	psect	maintext,global,class=CODE,space=0,split=1,delta=2
-    11                           	psect	text1,local,class=CODE,space=0,merge=1,delta=2
-    12                           	dabs	1,0x7E,2
-    13     0000                     
-    14                           ; Generated 12/10/2023 GMT
-    15                           ; 
-    16                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
-    17                           ; All rights reserved.
-    18                           ; 
-    19                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+     8                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1,noexec
+     9                           	psect	dataBANK0,global,class=BANK0,space=1,delta=1,noexec
+    10                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
+    11                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1,noexec
+    12                           	psect	maintext,global,class=CODE,space=0,split=1,delta=2
+    13                           	psect	text1,local,class=CODE,space=0,merge=1,delta=2
+    14                           	psect	text2,local,class=CODE,space=0,merge=1,delta=2
+    15                           	psect	text3,local,class=CODE,space=0,merge=1,delta=2
+    16                           	dabs	1,0x7E,2
+    17     0000                     
+    18                           ; Generated 12/10/2023 GMT
+    19                           ; 
+    20                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    21                           ; All rights reserved.
+    22                           ; 
+    23                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
       +                          ip").
-    20                           ; 
-    21                           ; Redistribution and use in source and binary forms, with or without modification, are
-    22                           ; permitted provided that the following conditions are met:
-    23                           ; 
-    24                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+    24                           ; 
+    25                           ; Redistribution and use in source and binary forms, with or without modification, are
+    26                           ; permitted provided that the following conditions are met:
+    27                           ; 
+    28                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
       +                          t of
-    25                           ;        conditions and the following disclaimer.
-    26                           ; 
-    27                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+    29                           ;        conditions and the following disclaimer.
+    30                           ; 
+    31                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
       +                          list
-    28                           ;        of conditions and the following disclaimer in the documentation and/or other
-    29                           ;        materials provided with the distribution. Publication is not required when
-    30                           ;        this file is used in an embedded application.
-    31                           ; 
-    32                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+    32                           ;        of conditions and the following disclaimer in the documentation and/or other
+    33                           ;        materials provided with the distribution. Publication is not required when
+    34                           ;        this file is used in an embedded application.
+    35                           ; 
+    36                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
       +                          is
-    33                           ;        software without specific prior written permission.
-    34                           ; 
-    35                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-    36                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+    37                           ;        software without specific prior written permission.
+    38                           ; 
+    39                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    40                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
       +                          OR
-    37                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+    41                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
       +                          T,
-    38                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
-    39                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
-    40                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+    42                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    43                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    44                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
       +                          RICT
-    41                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+    45                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
       +                          SE OF
-    42                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    43                           ; 
-    44                           ; 
-    45                           ; Code-generator required, PIC16F877A Definitions
-    46                           ; 
-    47                           ; SFR Addresses
-    48     0004                     fsr             equ	4
-    49     0004                     fsr0            equ	4
-    50     0000                     indf            equ	0
-    51     0000                     indf0           equ	0
-    52     0002                     pc              equ	2
-    53     0002                     pcl             equ	2
-    54     000A                     pclath          equ	10
-    55     0003                     status          equ	3
-    56     0000                     INDF            equ	0	;# 
-    57     0001                     TMR0            equ	1	;# 
-    58     0002                     PCL             equ	2	;# 
-    59     0003                     STATUS          equ	3	;# 
-    60     0004                     FSR             equ	4	;# 
-    61     0005                     PORTA           equ	5	;# 
-    62     0006                     PORTB           equ	6	;# 
-    63     0007                     PORTC           equ	7	;# 
-    64     0008                     PORTD           equ	8	;# 
-    65     0009                     PORTE           equ	9	;# 
-    66     000A                     PCLATH          equ	10	;# 
-    67     000B                     INTCON          equ	11	;# 
-    68     000C                     PIR1            equ	12	;# 
-    69     000D                     PIR2            equ	13	;# 
-    70     000E                     TMR1            equ	14	;# 
-    71     000E                     TMR1L           equ	14	;# 
-    72     000F                     TMR1H           equ	15	;# 
-    73     0010                     T1CON           equ	16	;# 
-    74     0011                     TMR2            equ	17	;# 
-    75     0012                     T2CON           equ	18	;# 
-    76     0013                     SSPBUF          equ	19	;# 
-    77     0014                     SSPCON          equ	20	;# 
-    78     0015                     CCPR1           equ	21	;# 
-    79     0015                     CCPR1L          equ	21	;# 
-    80     0016                     CCPR1H          equ	22	;# 
-    81     0017                     CCP1CON         equ	23	;# 
-    82     0018                     RCSTA           equ	24	;# 
-    83     0019                     TXREG           equ	25	;# 
-    84     001A                     RCREG           equ	26	;# 
-    85     001B                     CCPR2           equ	27	;# 
-    86     001B                     CCPR2L          equ	27	;# 
-    87     001C                     CCPR2H          equ	28	;# 
-    88     001D                     CCP2CON         equ	29	;# 
-    89     001E                     ADRESH          equ	30	;# 
-    90     001F                     ADCON0          equ	31	;# 
-    91     0081                     OPTION_REG      equ	129	;# 
-    92     0085                     TRISA           equ	133	;# 
-    93     0086                     TRISB           equ	134	;# 
-    94     0087                     TRISC           equ	135	;# 
-    95     0088                     TRISD           equ	136	;# 
-    96     0089                     TRISE           equ	137	;# 
-    97     008C                     PIE1            equ	140	;# 
-    98     008D                     PIE2            equ	141	;# 
-    99     008E                     PCON            equ	142	;# 
-   100     0091                     SSPCON2         equ	145	;# 
-   101     0092                     PR2             equ	146	;# 
-   102     0093                     SSPADD          equ	147	;# 
-   103     0094                     SSPSTAT         equ	148	;# 
-   104     0098                     TXSTA           equ	152	;# 
-   105     0099                     SPBRG           equ	153	;# 
-   106     009C                     CMCON           equ	156	;# 
-   107     009D                     CVRCON          equ	157	;# 
-   108     009E                     ADRESL          equ	158	;# 
-   109     009F                     ADCON1          equ	159	;# 
-   110     010C                     EEDATA          equ	268	;# 
-   111     010D                     EEADR           equ	269	;# 
-   112     010E                     EEDATH          equ	270	;# 
-   113     010F                     EEADRH          equ	271	;# 
-   114     018C                     EECON1          equ	396	;# 
-   115     018D                     EECON2          equ	397	;# 
-   116     0000                     INDF            equ	0	;# 
-   117     0001                     TMR0            equ	1	;# 
-   118     0002                     PCL             equ	2	;# 
-   119     0003                     STATUS          equ	3	;# 
-   120     0004                     FSR             equ	4	;# 
-   121     0005                     PORTA           equ	5	;# 
-   122     0006                     PORTB           equ	6	;# 
-   123     0007                     PORTC           equ	7	;# 
-   124     0008                     PORTD           equ	8	;# 
-   125     0009                     PORTE           equ	9	;# 
-   126     000A                     PCLATH          equ	10	;# 
-   127     000B                     INTCON          equ	11	;# 
-   128     000C                     PIR1            equ	12	;# 
-   129     000D                     PIR2            equ	13	;# 
-   130     000E                     TMR1            equ	14	;# 
-   131     000E                     TMR1L           equ	14	;# 
-   132     000F                     TMR1H           equ	15	;# 
-   133     0010                     T1CON           equ	16	;# 
-   134     0011                     TMR2            equ	17	;# 
-   135     0012                     T2CON           equ	18	;# 
-   136     0013                     SSPBUF          equ	19	;# 
-   137     0014                     SSPCON          equ	20	;# 
-   138     0015                     CCPR1           equ	21	;# 
-   139     0015                     CCPR1L          equ	21	;# 
-   140     0016                     CCPR1H          equ	22	;# 
-   141     0017                     CCP1CON         equ	23	;# 
-   142     0018                     RCSTA           equ	24	;# 
-   143     0019                     TXREG           equ	25	;# 
-   144     001A                     RCREG           equ	26	;# 
-   145     001B                     CCPR2           equ	27	;# 
-   146     001B                     CCPR2L          equ	27	;# 
-   147     001C                     CCPR2H          equ	28	;# 
-   148     001D                     CCP2CON         equ	29	;# 
-   149     001E                     ADRESH          equ	30	;# 
-   150     001F                     ADCON0          equ	31	;# 
-   151     0081                     OPTION_REG      equ	129	;# 
-   152     0085                     TRISA           equ	133	;# 
-   153     0086                     TRISB           equ	134	;# 
-   154     0087                     TRISC           equ	135	;# 
-   155     0088                     TRISD           equ	136	;# 
-   156     0089                     TRISE           equ	137	;# 
-   157     008C                     PIE1            equ	140	;# 
-   158     008D                     PIE2            equ	141	;# 
-   159     008E                     PCON            equ	142	;# 
-   160     0091                     SSPCON2         equ	145	;# 
-   161     0092                     PR2             equ	146	;# 
-   162     0093                     SSPADD          equ	147	;# 
-   163     0094                     SSPSTAT         equ	148	;# 
-   164     0098                     TXSTA           equ	152	;# 
-   165     0099                     SPBRG           equ	153	;# 
-   166     009C                     CMCON           equ	156	;# 
-   167     009D                     CVRCON          equ	157	;# 
-   168     009E                     ADRESL          equ	158	;# 
-   169     009F                     ADCON1          equ	159	;# 
-   170     010C                     EEDATA          equ	268	;# 
-   171     010D                     EEADR           equ	269	;# 
-   172     010E                     EEDATH          equ	270	;# 
-   173     010F                     EEADRH          equ	271	;# 
-   174     018C                     EECON1          equ	396	;# 
-   175     018D                     EECON2          equ	397	;# 
-   176                           
-   177                           	psect	idataCOMMON
-   178     07A3                     __pidataCOMMON:
-   179                           
-   180                           ;initializer for main@speed
-   181     07A3  3401               	retlw	1
-   182                           
-   183                           	psect	strings
-   184     0003                     __pstrings:
-   185     0003                     stringtab:
-   186     0003                     __stringtab:
-   187     0003                     stringcode:	
-   188                           ;	String table - string pointers are 1 byte each
-   189                           
-   190     0003                     stringdir:
-   191     0003  3000               	movlw	high stringdir
-   192     0004  008A               	movwf	10
-   193     0005  0804               	movf	4,w
-   194     0006  0A84               	incf	4,f
-   195     0007  0782               	addwf	2,f
-   196     0008                     __stringbase:
-   197     0008  3400               	retlw	0
-   198     0009                     __end_of__stringtab:
-   199     0009                     chenillard@MIN_CHENILLARD:
-   200     0009  3401               	retlw	1
-   201     000A                     __end_ofchenillard@MIN_CHENILLARD:
-   202     000A                     chenillard@MAX_CHENILLARD:
-   203     000A  3480               	retlw	128
-   204     000B                     __end_ofchenillard@MAX_CHENILLARD:
-   205     0008                     _PORTD          set	8
-   206     0088                     _TRISD          set	136
-   207                           
-   208                           	psect	cinit
-   209     07F3                     start_initialization:	
-   210                           ; #config settings
-   211                           
-   212     07F3                     __initialization:
-   213                           
-   214                           ; Initialize objects allocated to COMMON
-   215     07F3  120A  118A  27A3  120A  118A  	fcall	__pidataCOMMON	;fetch initializer
-   216     07F8  00FD               	movwf	__pdataCOMMON& (0+127)
-   217                           
-   218                           ; Clear objects allocated to COMMON
-   219     07F9  01FA               	clrf	__pbssCOMMON& (0+127)
-   220     07FA  01FB               	clrf	(__pbssCOMMON+1)& (0+127)
-   221     07FB  01FC               	clrf	(__pbssCOMMON+2)& (0+127)
-   222     07FC                     end_of_initialization:	
-   223                           ;End of C runtime variable initialization code
-   224                           
-   225     07FC                     __end_of__initialization:
-   226     07FC  0183               	clrf	3
-   227     07FD  120A  118A  2FA4   	ljmp	_main	;jump to C main() function
-   228                           
-   229                           	psect	bssCOMMON
-   230     007A                     __pbssCOMMON:
-   231     007A                     chenillard@max:
-   232     007A                     	ds	1
-   233     007B                     chenillard@chenillard:
-   234     007B                     	ds	1
-   235     007C                     main@right:
-   236     007C                     	ds	1
-   237                           
-   238                           	psect	dataCOMMON
-   239     007D                     __pdataCOMMON:
-   240     007D                     main@speed:
-   241     007D                     	ds	1
-   242                           
-   243                           	psect	cstackCOMMON
-   244     0070                     __pcstackCOMMON:
-   245     0070                     ?_chenillard:
-   246     0070                     ??_chenillard:	
-   247                           ; 1 bytes @ 0x0
-   248                           
-   249                           
-   250                           ; 1 bytes @ 0x0
-   251     0070                     	ds	1
-   252     0071                     chenillard@right:
-   253                           
-   254                           ; 1 bytes @ 0x1
-   255     0071                     	ds	1
-   256     0072                     ?_main:
-   257     0072                     main@argc:	
-   258                           ; 2 bytes @ 0x2
-   259                           
-   260                           
-   261                           ; 2 bytes @ 0x2
-   262     0072                     	ds	2
-   263     0074                     main@argv:
-   264                           
-   265                           ; 2 bytes @ 0x4
-   266     0074                     	ds	2
-   267     0076                     ??_main:
-   268                           
-   269                           ; 1 bytes @ 0x6
-   270     0076                     	ds	3
-   271     0079                     main@menu:
-   272                           
-   273                           ; 1 bytes @ 0x9
-   274     0079                     	ds	1
-   275                           
-   276                           	psect	maintext
-   277     07A4                     __pmaintext:	
-   278 ;;
-   279 ;;Main: autosize = 0, tempsize = 3, incstack = 0, save=0
-   280 ;;
-   281 ;; *************** function _main *****************
-   282 ;; Defined at:
-   283 ;;		line 12 in file "main.c"
-   284 ;; Parameters:    Size  Location     Type
-   285 ;;  argc            2    2[COMMON] int 
-   286 ;;  argv            2    4[COMMON] PTR PTR unsigned char 
-   287 ;; Auto vars:     Size  Location     Type
-   288 ;;  menu            1    9[COMMON] _Bool 
-   289 ;;  up              1    0        _Bool 
-   290 ;; Return value:  Size  Location     Type
-   291 ;;                  2    2[COMMON] int 
-   292 ;; Registers used:
-   293 ;;		wreg, status,2, status,0, pclath, cstack
-   294 ;; Tracked objects:
-   295 ;;		On entry : B00/0
-   296 ;;		On exit  : 0/0
-   297 ;;		Unchanged: 0/0
-   298 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   299 ;;      Params:         4       0       0       0       0
-   300 ;;      Locals:         1       0       0       0       0
-   301 ;;      Temps:          3       0       0       0       0
-   302 ;;      Totals:         8       0       0       0       0
-   303 ;;Total ram usage:        8 bytes
-   304 ;; Hardware stack levels required when called: 1
-   305 ;; This function calls:
-   306 ;;		_chenillard
-   307 ;; This function is called by:
-   308 ;;		Startup code after reset
-   309 ;; This function uses a non-reentrant model
-   310 ;;
-   311                           
-   312     07A4                     _main:	
-   313                           ;psect for function _main
-   314                           
-   315     07A4                     l866:	
-   316                           ;incstack = 0
-   317                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
-   318                           
-   319     07A4  01F9               	clrf	main@menu
-   320     07A5                     l868:
-   321                           
-   322                           ;main.c: 16:     chenillard(right);
-   323     07A5  3000               	movlw	0
-   324     07A6  120A  118A  27BB  120A  118A  	fcall	_chenillard
-   325     07AB                     l870:
-   326                           
-   327                           ;main.c: 17:     _delay((unsigned long)((100 * speed)*(20000000/4000.0)));
-   328     07AB  3003               	movlw	3
-   329     07AC  00F8               	movwf	??_main+2
-   330     07AD  308A               	movlw	138
-   331     07AE  00F7               	movwf	??_main+1
-   332     07AF  3055               	movlw	85
-   333     07B0  00F6               	movwf	??_main
-   334     07B1                     u747:
-   335     07B1  0BF6               	decfsz	??_main,f
-   336     07B2  2FB1               	goto	u747
-   337     07B3  0BF7               	decfsz	??_main+1,f
-   338     07B4  2FB1               	goto	u747
-   339     07B5  0BF8               	decfsz	??_main+2,f
-   340     07B6  2FB1               	goto	u747
-   341     07B7  2FB8               	nop2
-   342     07B8                     l17:
-   343     07B8  120A  118A  2800   	ljmp	start
-   344     07BB                     __end_of_main:
-   345                           
-   346                           	psect	text1
-   347     07BB                     __ptext1:	
-   348 ;; *************** function _chenillard *****************
+    46                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    47                           ; 
+    48                           ; 
+    49                           ; Code-generator required, PIC16F877A Definitions
+    50                           ; 
+    51                           ; SFR Addresses
+    52     0004                     fsr             equ	4
+    53     0004                     fsr0            equ	4
+    54     0000                     indf            equ	0
+    55     0000                     indf0           equ	0
+    56     0002                     pc              equ	2
+    57     0002                     pcl             equ	2
+    58     000A                     pclath          equ	10
+    59     0003                     status          equ	3
+    60     0000                     INDF            equ	0	;# 
+    61     0001                     TMR0            equ	1	;# 
+    62     0002                     PCL             equ	2	;# 
+    63     0003                     STATUS          equ	3	;# 
+    64     0004                     FSR             equ	4	;# 
+    65     0005                     PORTA           equ	5	;# 
+    66     0006                     PORTB           equ	6	;# 
+    67     0007                     PORTC           equ	7	;# 
+    68     0008                     PORTD           equ	8	;# 
+    69     0009                     PORTE           equ	9	;# 
+    70     000A                     PCLATH          equ	10	;# 
+    71     000B                     INTCON          equ	11	;# 
+    72     000C                     PIR1            equ	12	;# 
+    73     000D                     PIR2            equ	13	;# 
+    74     000E                     TMR1            equ	14	;# 
+    75     000E                     TMR1L           equ	14	;# 
+    76     000F                     TMR1H           equ	15	;# 
+    77     0010                     T1CON           equ	16	;# 
+    78     0011                     TMR2            equ	17	;# 
+    79     0012                     T2CON           equ	18	;# 
+    80     0013                     SSPBUF          equ	19	;# 
+    81     0014                     SSPCON          equ	20	;# 
+    82     0015                     CCPR1           equ	21	;# 
+    83     0015                     CCPR1L          equ	21	;# 
+    84     0016                     CCPR1H          equ	22	;# 
+    85     0017                     CCP1CON         equ	23	;# 
+    86     0018                     RCSTA           equ	24	;# 
+    87     0019                     TXREG           equ	25	;# 
+    88     001A                     RCREG           equ	26	;# 
+    89     001B                     CCPR2           equ	27	;# 
+    90     001B                     CCPR2L          equ	27	;# 
+    91     001C                     CCPR2H          equ	28	;# 
+    92     001D                     CCP2CON         equ	29	;# 
+    93     001E                     ADRESH          equ	30	;# 
+    94     001F                     ADCON0          equ	31	;# 
+    95     0081                     OPTION_REG      equ	129	;# 
+    96     0085                     TRISA           equ	133	;# 
+    97     0086                     TRISB           equ	134	;# 
+    98     0087                     TRISC           equ	135	;# 
+    99     0088                     TRISD           equ	136	;# 
+   100     0089                     TRISE           equ	137	;# 
+   101     008C                     PIE1            equ	140	;# 
+   102     008D                     PIE2            equ	141	;# 
+   103     008E                     PCON            equ	142	;# 
+   104     0091                     SSPCON2         equ	145	;# 
+   105     0092                     PR2             equ	146	;# 
+   106     0093                     SSPADD          equ	147	;# 
+   107     0094                     SSPSTAT         equ	148	;# 
+   108     0098                     TXSTA           equ	152	;# 
+   109     0099                     SPBRG           equ	153	;# 
+   110     009C                     CMCON           equ	156	;# 
+   111     009D                     CVRCON          equ	157	;# 
+   112     009E                     ADRESL          equ	158	;# 
+   113     009F                     ADCON1          equ	159	;# 
+   114     010C                     EEDATA          equ	268	;# 
+   115     010D                     EEADR           equ	269	;# 
+   116     010E                     EEDATH          equ	270	;# 
+   117     010F                     EEADRH          equ	271	;# 
+   118     018C                     EECON1          equ	396	;# 
+   119     018D                     EECON2          equ	397	;# 
+   120     0000                     INDF            equ	0	;# 
+   121     0001                     TMR0            equ	1	;# 
+   122     0002                     PCL             equ	2	;# 
+   123     0003                     STATUS          equ	3	;# 
+   124     0004                     FSR             equ	4	;# 
+   125     0005                     PORTA           equ	5	;# 
+   126     0006                     PORTB           equ	6	;# 
+   127     0007                     PORTC           equ	7	;# 
+   128     0008                     PORTD           equ	8	;# 
+   129     0009                     PORTE           equ	9	;# 
+   130     000A                     PCLATH          equ	10	;# 
+   131     000B                     INTCON          equ	11	;# 
+   132     000C                     PIR1            equ	12	;# 
+   133     000D                     PIR2            equ	13	;# 
+   134     000E                     TMR1            equ	14	;# 
+   135     000E                     TMR1L           equ	14	;# 
+   136     000F                     TMR1H           equ	15	;# 
+   137     0010                     T1CON           equ	16	;# 
+   138     0011                     TMR2            equ	17	;# 
+   139     0012                     T2CON           equ	18	;# 
+   140     0013                     SSPBUF          equ	19	;# 
+   141     0014                     SSPCON          equ	20	;# 
+   142     0015                     CCPR1           equ	21	;# 
+   143     0015                     CCPR1L          equ	21	;# 
+   144     0016                     CCPR1H          equ	22	;# 
+   145     0017                     CCP1CON         equ	23	;# 
+   146     0018                     RCSTA           equ	24	;# 
+   147     0019                     TXREG           equ	25	;# 
+   148     001A                     RCREG           equ	26	;# 
+   149     001B                     CCPR2           equ	27	;# 
+   150     001B                     CCPR2L          equ	27	;# 
+   151     001C                     CCPR2H          equ	28	;# 
+   152     001D                     CCP2CON         equ	29	;# 
+   153     001E                     ADRESH          equ	30	;# 
+   154     001F                     ADCON0          equ	31	;# 
+   155     0081                     OPTION_REG      equ	129	;# 
+   156     0085                     TRISA           equ	133	;# 
+   157     0086                     TRISB           equ	134	;# 
+   158     0087                     TRISC           equ	135	;# 
+   159     0088                     TRISD           equ	136	;# 
+   160     0089                     TRISE           equ	137	;# 
+   161     008C                     PIE1            equ	140	;# 
+   162     008D                     PIE2            equ	141	;# 
+   163     008E                     PCON            equ	142	;# 
+   164     0091                     SSPCON2         equ	145	;# 
+   165     0092                     PR2             equ	146	;# 
+   166     0093                     SSPADD          equ	147	;# 
+   167     0094                     SSPSTAT         equ	148	;# 
+   168     0098                     TXSTA           equ	152	;# 
+   169     0099                     SPBRG           equ	153	;# 
+   170     009C                     CMCON           equ	156	;# 
+   171     009D                     CVRCON          equ	157	;# 
+   172     009E                     ADRESL          equ	158	;# 
+   173     009F                     ADCON1          equ	159	;# 
+   174     010C                     EEDATA          equ	268	;# 
+   175     010D                     EEADR           equ	269	;# 
+   176     010E                     EEDATH          equ	270	;# 
+   177     010F                     EEADRH          equ	271	;# 
+   178     018C                     EECON1          equ	396	;# 
+   179     018D                     EECON2          equ	397	;# 
+   180                           
+   181                           	psect	idataBANK0
+   182     0708                     __pidataBANK0:
+   183                           
+   184                           ;initializer for main@speed
+   185     0708  3401               	retlw	1
+   186                           
+   187                           	psect	strings
+   188     0003                     __pstrings:
+   189     0003                     stringtab:
+   190     0003                     __stringtab:
+   191     0003                     stringcode:	
+   192                           ;	String table - string pointers are 1 byte each
+   193                           
+   194     0003                     stringdir:
+   195     0003  3000               	movlw	high stringdir
+   196     0004  008A               	movwf	10
+   197     0005  0804               	movf	4,w
+   198     0006  0A84               	incf	4,f
+   199     0007  0782               	addwf	2,f
+   200     0008                     __stringbase:
+   201     0008  3400               	retlw	0
+   202     0009                     __end_of__stringtab:
+   203     0009                     chenillard@MIN_CHENILLARD:
+   204     0009  3401               	retlw	1
+   205     000A                     __end_ofchenillard@MIN_CHENILLARD:
+   206     000A                     chenillard@MAX_CHENILLARD:
+   207     000A  3480               	retlw	128
+   208     000B                     __end_ofchenillard@MAX_CHENILLARD:
+   209     0007                     _PORTC          set	7
+   210     0006                     _PORTBbits      set	6
+   211     0008                     _PORTD          set	8
+   212     0088                     _TRISD          set	136
+   213     0087                     _TRISC          set	135
+   214     0086                     _TRISB          set	134
+   215                           
+   216                           	psect	cinit
+   217     07F1                     start_initialization:	
+   218                           ; #config settings
+   219                           
+   220     07F1                     __initialization:
+   221                           
+   222                           ; Initialize objects allocated to BANK0
+   223     07F1  120A  118A  2708  120A  118A  	fcall	__pidataBANK0	;fetch initializer
+   224     07F6  00A7               	movwf	__pdataBANK0& (0+127)
+   225                           
+   226                           ; Clear objects allocated to BANK0
+   227     07F7  01A0               	clrf	__pbssBANK0& (0+127)
+   228     07F8  01A1               	clrf	(__pbssBANK0+1)& (0+127)
+   229     07F9  01A2               	clrf	(__pbssBANK0+2)& (0+127)
+   230     07FA  01A3               	clrf	(__pbssBANK0+3)& (0+127)
+   231                           
+   232                           ; Clear objects allocated to COMMON
+   233     07FB  01FD               	clrf	__pbssCOMMON& (0+127)
+   234     07FC                     end_of_initialization:	
+   235                           ;End of C runtime variable initialization code
+   236                           
+   237     07FC                     __end_of__initialization:
+   238     07FC  0183               	clrf	3
+   239     07FD  120A  118A  2F95   	ljmp	_main	;jump to C main() function
+   240                           
+   241                           	psect	bssCOMMON
+   242     007D                     __pbssCOMMON:
+   243     007D                     chenillard@chenillard:
+   244     007D                     	ds	1
+   245                           
+   246                           	psect	bssBANK0
+   247     0020                     __pbssBANK0:
+   248     0020                     chenillard@max:
+   249     0020                     	ds	1
+   250     0021                     read_button@menu_mem:
+   251     0021                     	ds	1
+   252     0022                     read_button@up_mem:
+   253     0022                     	ds	1
+   254     0023                     main@right:
+   255     0023                     	ds	1
+   256                           
+   257                           	psect	dataBANK0
+   258     0027                     __pdataBANK0:
+   259     0027                     main@speed:
+   260     0027                     	ds	1
+   261                           
+   262                           	psect	cstackCOMMON
+   263     0070                     __pcstackCOMMON:
+   264     0070                     ?_read_button:
+   265     0070                     ?_chenillard:	
+   266                           ; 1 bytes @ 0x0
+   267                           
+   268     0070                     ?_read_switch:	
+   269                           ; 1 bytes @ 0x0
+   270                           
+   271     0070                     read_button@up:	
+   272                           ; 1 bytes @ 0x0
+   273                           
+   274     0070                     read_switch@switchs:	
+   275                           ; 1 bytes @ 0x0
+   276                           
+   277     0070                     ??_chenillard:	
+   278                           ; 1 bytes @ 0x0
+   279                           
+   280                           
+   281                           ; 1 bytes @ 0x0
+   282     0070                     	ds	1
+   283     0071                     read_button@menu:
+   284     0071                     chenillard@right:	
+   285                           ; 1 bytes @ 0x1
+   286                           
+   287     0071                     ??_read_switch:	
+   288                           ; 1 bytes @ 0x1
+   289                           
+   290                           
+   291                           ; 1 bytes @ 0x1
+   292     0071                     	ds	1
+   293     0072                     _read_button$97:
+   294     0072                     ??_read_button:	
+   295                           ; 1 bytes @ 0x2
+   296                           
+   297                           
+   298                           ; 1 bytes @ 0x2
+   299     0072                     	ds	1
+   300     0073                     _read_button$98:
+   301                           
+   302                           ; 1 bytes @ 0x3
+   303     0073                     	ds	1
+   304     0074                     read_button@up_read:
+   305                           
+   306                           ; 1 bytes @ 0x4
+   307     0074                     	ds	1
+   308     0075                     read_button@menu_read:
+   309                           
+   310                           ; 1 bytes @ 0x5
+   311     0075                     	ds	1
+   312     0076                     ?_main:
+   313     0076                     main@argc:	
+   314                           ; 2 bytes @ 0x6
+   315                           
+   316                           
+   317                           ; 2 bytes @ 0x6
+   318     0076                     	ds	2
+   319     0078                     main@argv:
+   320                           
+   321                           ; 2 bytes @ 0x8
+   322     0078                     	ds	2
+   323     007A                     ??_main:
+   324                           
+   325                           ; 1 bytes @ 0xA
+   326     007A                     	ds	3
+   327                           
+   328                           	psect	cstackBANK0
+   329     0024                     __pcstackBANK0:
+   330     0024                     main@switchs:
+   331                           
+   332                           ; 1 bytes @ 0x0
+   333     0024                     	ds	1
+   334     0025                     main@up:
+   335                           
+   336                           ; 1 bytes @ 0x1
+   337     0025                     	ds	1
+   338     0026                     main@menu:
+   339                           
+   340                           ; 1 bytes @ 0x2
+   341     0026                     	ds	1
+   342                           
+   343                           	psect	maintext
+   344     0795                     __pmaintext:	
+   345 ;;
+   346 ;;Main: autosize = 0, tempsize = 3, incstack = 0, save=0
+   347 ;;
+   348 ;; *************** function _main *****************
    349 ;; Defined at:
-   350 ;;		line 21 in file "main.c"
+   350 ;;		line 12 in file "main.c"
    351 ;; Parameters:    Size  Location     Type
-   352 ;;  right           1    wreg     _Bool 
-   353 ;; Auto vars:     Size  Location     Type
-   354 ;;  right           1    1[COMMON] _Bool 
-   355 ;; Return value:  Size  Location     Type
-   356 ;;                  1    wreg      void 
-   357 ;; Registers used:
-   358 ;;		wreg, status,2, status,0
-   359 ;; Tracked objects:
-   360 ;;		On entry : 0/0
-   361 ;;		On exit  : 0/0
-   362 ;;		Unchanged: 0/0
-   363 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   364 ;;      Params:         0       0       0       0       0
-   365 ;;      Locals:         1       0       0       0       0
-   366 ;;      Temps:          1       0       0       0       0
-   367 ;;      Totals:         2       0       0       0       0
-   368 ;;Total ram usage:        2 bytes
-   369 ;; Hardware stack levels used: 1
-   370 ;; This function calls:
-   371 ;;		Nothing
-   372 ;; This function is called by:
-   373 ;;		_main
-   374 ;; This function uses a non-reentrant model
-   375 ;;
-   376                           
-   377     07BB                     _chenillard:	
-   378                           ;psect for function _chenillard
-   379                           
-   380                           
-   381                           ;incstack = 0
-   382                           ; Regs used in _chenillard: [wreg+status,2+status,0]
-   383                           ;chenillard@right stored from wreg
-   384     07BB  00F1               	movwf	chenillard@right
-   385     07BC                     l580:
-   386                           
-   387                           ;main.c: 22:     const uint8_t MAX_CHENILLARD = 0x80;;main.c: 23:     const uint8_t MIN_
-      +                          CHENILLARD = 0x01;;main.c: 25:     static uint8_t chenillard = 0;;main.c: 26:     static
-      +                           _Bool max = 0;;main.c: 28:     TRISD = 0x00;
-   388     07BC  1683               	bsf	3,5	;RP0=1, select bank1
-   389     07BD  1303               	bcf	3,6	;RP1=0, select bank1
-   390     07BE  0188               	clrf	8	;volatile
-   391     07BF                     l582:
-   392                           
-   393                           ;main.c: 29:     if (right == 1) {
-   394     07BF  0371               	decf	chenillard@right,w
-   395     07C0  1D03               	btfss	3,2
-   396     07C1  2FC3               	goto	u11
-   397     07C2  2FC4               	goto	u10
-   398     07C3                     u11:
-   399     07C3  2FDA               	goto	l596
-   400     07C4                     u10:
-   401     07C4                     l584:
-   402                           
-   403                           ;main.c: 30:         if (chenillard == MAX_CHENILLARD) {
-   404     07C4  3080               	movlw	128
-   405     07C5  067B               	xorwf	chenillard@chenillard,w
-   406     07C6  1D03               	btfss	3,2
-   407     07C7  2FC9               	goto	u21
-   408     07C8  2FCA               	goto	u20
-   409     07C9                     u21:
-   410     07C9  2FCC               	goto	l588
-   411     07CA                     u20:
-   412     07CA                     l586:
-   413                           
-   414                           ;main.c: 31:             max = 1;
-   415     07CA  3001               	movlw	1
-   416     07CB  00FA               	movwf	chenillard@max
-   417     07CC                     l588:
-   418                           
-   419                           ;main.c: 33:         if (max) {
-   420     07CC  087A               	movf	chenillard@max,w
-   421     07CD  1903               	btfsc	3,2
-   422     07CE  2FD0               	goto	u31
-   423     07CF  2FD1               	goto	u30
-   424     07D0                     u31:
-   425     07D0  2FD5               	goto	l594
-   426     07D1                     u30:
-   427     07D1                     l590:
-   428                           
-   429                           ;main.c: 34:             chenillard = MIN_CHENILLARD;
-   430     07D1  3001               	movlw	1
-   431     07D2  00FB               	movwf	chenillard@chenillard
-   432     07D3                     l592:
-   433                           
-   434                           ;main.c: 35:             max = 0;
-   435     07D3  01FA               	clrf	chenillard@max
-   436                           
-   437                           ;main.c: 36:         } else {
-   438     07D4  2FEE               	goto	l608
-   439     07D5                     l594:
-   440                           
-   441                           ;main.c: 37:             chenillard = chenillard << 1;
-   442     07D5  087B               	movf	chenillard@chenillard,w
-   443     07D6  00F0               	movwf	??_chenillard
-   444     07D7  0770               	addwf	??_chenillard,w
-   445     07D8  00FB               	movwf	chenillard@chenillard
-   446     07D9  2FEE               	goto	l608
-   447     07DA                     l596:
-   448                           
-   449                           ;main.c: 40:         if (chenillard == MIN_CHENILLARD) {
-   450     07DA  037B               	decf	chenillard@chenillard,w
-   451     07DB  1D03               	btfss	3,2
-   452     07DC  2FDE               	goto	u41
-   453     07DD  2FDF               	goto	u40
-   454     07DE                     u41:
-   455     07DE  2FE1               	goto	l600
-   456     07DF                     u40:
-   457     07DF                     l598:
+   352 ;;  argc            2    6[COMMON] int 
+   353 ;;  argv            2    8[COMMON] PTR PTR unsigned char 
+   354 ;; Auto vars:     Size  Location     Type
+   355 ;;  menu            1    2[BANK0 ] _Bool 
+   356 ;;  up              1    1[BANK0 ] _Bool 
+   357 ;;  switchs         1    0[BANK0 ] unsigned char 
+   358 ;; Return value:  Size  Location     Type
+   359 ;;                  2    6[COMMON] int 
+   360 ;; Registers used:
+   361 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   362 ;; Tracked objects:
+   363 ;;		On entry : B00/0
+   364 ;;		On exit  : 0/0
+   365 ;;		Unchanged: 0/0
+   366 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   367 ;;      Params:         4       0       0       0       0
+   368 ;;      Locals:         0       3       0       0       0
+   369 ;;      Temps:          3       0       0       0       0
+   370 ;;      Totals:         7       3       0       0       0
+   371 ;;Total ram usage:       10 bytes
+   372 ;; Hardware stack levels required when called: 1
+   373 ;; This function calls:
+   374 ;;		_chenillard
+   375 ;;		_read_button
+   376 ;;		_read_switch
+   377 ;; This function is called by:
+   378 ;;		Startup code after reset
+   379 ;; This function uses a non-reentrant model
+   380 ;;
+   381                           
+   382     0795                     _main:	
+   383                           ;psect for function _main
+   384                           
+   385     0795                     l758:	
+   386                           ;incstack = 0
+   387                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   388                           
+   389                           
+   390                           ;main.c: 13:     static _Bool right = 0;;main.c: 14:     static uint8_t speed = 1;;main.
+      +                          c: 15:     _Bool up = 0, menu = 0;
+   391     0795  1283               	bcf	3,5	;RP0=0, select bank0
+   392     0796  1303               	bcf	3,6	;RP1=0, select bank0
+   393     0797  01A5               	clrf	main@up
+   394     0798  01A6               	clrf	main@menu
+   395                           
+   396                           ;main.c: 16:     uint8_t switchs = 0;
+   397     0799  01A4               	clrf	main@switchs
+   398     079A                     l760:
+   399                           
+   400                           ;main.c: 19:     TRISB = 0x01;
+   401     079A  3001               	movlw	1
+   402     079B  1683               	bsf	3,5	;RP0=1, select bank1
+   403     079C  1303               	bcf	3,6	;RP1=0, select bank1
+   404     079D  0086               	movwf	6	;volatile
+   405     079E                     l762:
+   406                           
+   407                           ;main.c: 20:     TRISC = 0x01;
+   408     079E  3001               	movlw	1
+   409     079F  0087               	movwf	7	;volatile
+   410     07A0                     l764:
+   411                           
+   412                           ;main.c: 22:         read_button(&up, &menu);
+   413     07A0  3025               	movlw	(low (main@up| 0))& (0+255)
+   414     07A1  00F0               	movwf	read_button@up
+   415     07A2  3026               	movlw	(low (main@menu| 0))& (0+255)
+   416     07A3  00F1               	movwf	read_button@menu
+   417     07A4  120A  118A  274D  120A  118A  	fcall	_read_button
+   418     07A9                     l766:
+   419                           
+   420                           ;main.c: 23:         if (up == menu) {
+   421     07A9  1283               	bcf	3,5	;RP0=0, select bank0
+   422     07AA  1303               	bcf	3,6	;RP1=0, select bank0
+   423     07AB  0825               	movf	main@up,w
+   424     07AC  0626               	xorwf	main@menu,w
+   425     07AD  1D03               	skipz
+   426     07AE  2FB0               	goto	u411
+   427     07AF  2FB1               	goto	u410
+   428     07B0                     u411:
+   429     07B0  2FE2               	goto	l782
+   430     07B1                     u410:
+   431     07B1                     l768:
+   432                           
+   433                           ;main.c: 24:             if (up != menu) {
+   434     07B1  0825               	movf	main@up,w
+   435     07B2  0626               	xorwf	main@menu,w
+   436     07B3  1903               	skipnz
+   437     07B4  2FB6               	goto	u421
+   438     07B5  2FB7               	goto	u420
+   439     07B6                     u421:
+   440     07B6  2FBF               	goto	l31
+   441     07B7                     u420:
+   442     07B7                     l770:
+   443                           
+   444                           ;main.c: 25:                 right = !right;
+   445     07B7  0823               	movf	main@right,w
+   446     07B8  1903               	btfsc	3,2
+   447     07B9  2FBB               	goto	u431
+   448     07BA  2FBD               	goto	u430
+   449     07BB                     u431:
+   450     07BB  3001               	movlw	1
+   451     07BC  2FBE               	goto	u440
+   452     07BD                     u430:
+   453     07BD  3000               	movlw	0
+   454     07BE                     u440:
+   455     07BE  00A3               	movwf	main@right
+   456     07BF                     l31:	
+   457                           ;main.c: 26:             }
    458                           
-   459                           ;main.c: 41:             max = 1;
-   460     07DF  3001               	movlw	1
-   461     07E0  00FA               	movwf	chenillard@max
-   462     07E1                     l600:
-   463                           
-   464                           ;main.c: 43:         if (max) {
-   465     07E1  087A               	movf	chenillard@max,w
-   466     07E2  1903               	btfsc	3,2
-   467     07E3  2FE5               	goto	u51
-   468     07E4  2FE6               	goto	u50
-   469     07E5                     u51:
-   470     07E5  2FE9               	goto	l606
-   471     07E6                     u50:
-   472     07E6                     l602:
-   473                           
-   474                           ;main.c: 44:             chenillard = MAX_CHENILLARD;
-   475     07E6  3080               	movlw	128
-   476     07E7  00FB               	movwf	chenillard@chenillard
-   477     07E8  2FD3               	goto	l592
-   478     07E9                     l606:
-   479                           
-   480                           ;main.c: 47:             chenillard = chenillard >> 1;
-   481     07E9  087B               	movf	chenillard@chenillard,w
-   482     07EA  00F0               	movwf	??_chenillard
-   483     07EB  1003               	clrc
-   484     07EC  0C70               	rrf	??_chenillard,w
-   485     07ED  00FB               	movwf	chenillard@chenillard
-   486     07EE                     l608:
-   487                           
-   488                           ;main.c: 50:     PORTD = chenillard;
-   489     07EE  087B               	movf	chenillard@chenillard,w
-   490     07EF  1283               	bcf	3,5	;RP0=0, select bank0
-   491     07F0  1303               	bcf	3,6	;RP1=0, select bank0
-   492     07F1  0088               	movwf	8	;volatile
-   493     07F2                     l36:
-   494     07F2  0008               	return
-   495     07F3                     __end_of_chenillard:
-   496     0002                     ___latbits      equ	2
-   497     007E                     btemp           set	126	;btemp
-   498     007E                     wtemp0          set	126
+   459                           
+   460                           ;main.c: 27:             if (menu) {
+   461     07BF  0826               	movf	main@menu,w
+   462     07C0  1903               	btfsc	3,2
+   463     07C1  2FC3               	goto	u451
+   464     07C2  2FC4               	goto	u450
+   465     07C3                     u451:
+   466     07C3  2FCE               	goto	l778
+   467     07C4                     u450:
+   468     07C4                     l772:
+   469                           
+   470                           ;main.c: 28:                 speed += 1;
+   471     07C4  3001               	movlw	1
+   472     07C5  07A7               	addwf	main@speed,f
+   473     07C6                     l774:
+   474                           
+   475                           ;main.c: 29:                 if (speed > 10) {
+   476     07C6  300B               	movlw	11
+   477     07C7  0227               	subwf	main@speed,w
+   478     07C8  1C03               	skipc
+   479     07C9  2FCB               	goto	u461
+   480     07CA  2FCC               	goto	u460
+   481     07CB                     u461:
+   482     07CB  2FCE               	goto	l778
+   483     07CC                     u460:
+   484     07CC                     l776:
+   485                           
+   486                           ;main.c: 30:                     speed = 1;
+   487     07CC  3001               	movlw	1
+   488     07CD  00A7               	movwf	main@speed
+   489     07CE                     l778:
+   490                           
+   491                           ;main.c: 33:             chenillard(right);
+   492     07CE  0823               	movf	main@right,w
+   493     07CF  120A  118A  2711  120A  118A  	fcall	_chenillard
+   494     07D4                     l780:
+   495                           
+   496                           ;main.c: 35:             _delay((unsigned long)((100)*(20000000/4000.0)));
+   497     07D4  3003               	movlw	3
+   498     07D5  00FC               	movwf	??_main+2
+   499     07D6  308A               	movlw	138
+   500     07D7  00FB               	movwf	??_main+1
+   501     07D8  3055               	movlw	85
+   502     07D9  00FA               	movwf	??_main
+   503     07DA                     u477:
+   504     07DA  0BFA               	decfsz	??_main,f
+   505     07DB  2FDA               	goto	u477
+   506     07DC  0BFB               	decfsz	??_main+1,f
+   507     07DD  2FDA               	goto	u477
+   508     07DE  0BFC               	decfsz	??_main+2,f
+   509     07DF  2FDA               	goto	u477
+   510     07E0  2FE1               	nop2
+   511                           
+   512                           ;main.c: 36:         } else {
+   513     07E1  2FA0               	goto	l764
+   514     07E2                     l782:
+   515                           
+   516                           ;main.c: 37:             read_switch(&switchs);
+   517     07E2  3024               	movlw	(low (main@switchs| 0))& (0+255)
+   518     07E3  00F0               	movwf	read_switch@switchs
+   519     07E4  120A  118A  2709  120A  118A  	fcall	_read_switch
+   520     07E9                     l784:
+   521                           
+   522                           ;main.c: 38:             PORTD = switchs;
+   523     07E9  1283               	bcf	3,5	;RP0=0, select bank0
+   524     07EA  1303               	bcf	3,6	;RP1=0, select bank0
+   525     07EB  0824               	movf	main@switchs,w
+   526     07EC  0088               	movwf	8	;volatile
+   527     07ED  2FA0               	goto	l764
+   528     07EE  120A  118A  2800   	ljmp	start
+   529     07F1                     __end_of_main:
+   530                           
+   531                           	psect	text1
+   532     0709                     __ptext1:	
+   533 ;; *************** function _read_switch *****************
+   534 ;; Defined at:
+   535 ;;		line 57 in file "main.c"
+   536 ;; Parameters:    Size  Location     Type
+   537 ;;  switchs         1    0[COMMON] PTR unsigned char 
+   538 ;;		 -> main@switchs(1), 
+   539 ;; Auto vars:     Size  Location     Type
+   540 ;;		None
+   541 ;; Return value:  Size  Location     Type
+   542 ;;                  1    wreg      void 
+   543 ;; Registers used:
+   544 ;;		wreg, fsr0l, fsr0h
+   545 ;; Tracked objects:
+   546 ;;		On entry : 0/0
+   547 ;;		On exit  : 0/0
+   548 ;;		Unchanged: 0/0
+   549 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   550 ;;      Params:         1       0       0       0       0
+   551 ;;      Locals:         0       0       0       0       0
+   552 ;;      Temps:          0       0       0       0       0
+   553 ;;      Totals:         1       0       0       0       0
+   554 ;;Total ram usage:        1 bytes
+   555 ;; Hardware stack levels used: 1
+   556 ;; This function calls:
+   557 ;;		Nothing
+   558 ;; This function is called by:
+   559 ;;		_main
+   560 ;; This function uses a non-reentrant model
+   561 ;;
+   562                           
+   563     0709                     _read_switch:	
+   564                           ;psect for function _read_switch
+   565                           
+   566     0709                     l756:	
+   567                           ;incstack = 0
+   568                           ; Regs used in _read_switch: [wregfsr0]
+   569                           
+   570                           
+   571                           ;main.c: 58:     *switchs = PORTC;
+   572     0709  0870               	movf	read_switch@switchs,w
+   573     070A  0084               	movwf	4
+   574     070B  1283               	bcf	3,5	;RP0=0, select bank0
+   575     070C  1303               	bcf	3,6	;RP1=0, select bank0
+   576     070D  0807               	movf	7,w	;volatile
+   577     070E  1383               	bcf	3,7	;select IRP bank0
+   578     070F  0080               	movwf	0
+   579     0710                     l51:
+   580     0710  0008               	return
+   581     0711                     __end_of_read_switch:
+   582                           
+   583                           	psect	text2
+   584     074D                     __ptext2:	
+   585 ;; *************** function _read_button *****************
+   586 ;; Defined at:
+   587 ;;		line 45 in file "main.c"
+   588 ;; Parameters:    Size  Location     Type
+   589 ;;  up              1    0[COMMON] PTR _Bool 
+   590 ;;		 -> main@up(1), 
+   591 ;;  menu            1    1[COMMON] PTR _Bool 
+   592 ;;		 -> main@menu(1), 
+   593 ;; Auto vars:     Size  Location     Type
+   594 ;;  menu_read       1    5[COMMON] unsigned char 
+   595 ;;  up_read         1    4[COMMON] unsigned char 
+   596 ;; Return value:  Size  Location     Type
+   597 ;;                  1    wreg      void 
+   598 ;; Registers used:
+   599 ;;		wreg, fsr0l, fsr0h, status,2, status,0
+   600 ;; Tracked objects:
+   601 ;;		On entry : 0/0
+   602 ;;		On exit  : 0/0
+   603 ;;		Unchanged: 0/0
+   604 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   605 ;;      Params:         2       0       0       0       0
+   606 ;;      Locals:         4       0       0       0       0
+   607 ;;      Temps:          0       0       0       0       0
+   608 ;;      Totals:         6       0       0       0       0
+   609 ;;Total ram usage:        6 bytes
+   610 ;; Hardware stack levels used: 1
+   611 ;; This function calls:
+   612 ;;		Nothing
+   613 ;; This function is called by:
+   614 ;;		_main
+   615 ;; This function uses a non-reentrant model
+   616 ;;
+   617                           
+   618     074D                     _read_button:	
+   619                           ;psect for function _read_button
+   620                           
+   621     074D                     l700:	
+   622                           ;incstack = 0
+   623                           ; Regs used in _read_button: [wreg-fsr0h+status,2+status,0]
+   624                           
+   625                           
+   626                           ;main.c: 46:     static _Bool up_mem, menu_mem = 0;;main.c: 47:     uint8_t up_read = PO
+      +                          RTBbits.RB0;
+   627     074D  1283               	bcf	3,5	;RP0=0, select bank0
+   628     074E  1303               	bcf	3,6	;RP1=0, select bank0
+   629     074F  0806               	movf	6,w	;volatile
+   630     0750  3901               	andlw	1
+   631     0751  00F4               	movwf	read_button@up_read
+   632                           
+   633                           ;main.c: 48:     uint8_t menu_read = PORTBbits.RB1;
+   634     0752  0C06               	rrf	6,w	;volatile
+   635     0753  3901               	andlw	1
+   636     0754  00F5               	movwf	read_button@menu_read
+   637     0755                     l702:
+   638                           
+   639                           ;main.c: 50:     *up = (up_mem != up_read && PORTBbits.RB0 == 0);
+   640     0755  01F2               	clrf	_read_button$97
+   641     0756                     l704:
+   642     0756  0822               	movf	read_button@up_mem,w
+   643     0757  0674               	xorwf	read_button@up_read,w
+   644     0758  1903               	skipnz
+   645     0759  2F5B               	goto	u241
+   646     075A  2F5C               	goto	u240
+   647     075B                     u241:
+   648     075B  2F62               	goto	l710
+   649     075C                     u240:
+   650     075C                     l706:
+   651     075C  1806               	btfsc	6,0	;volatile
+   652     075D  2F5F               	goto	u251
+   653     075E  2F60               	goto	u250
+   654     075F                     u251:
+   655     075F  2F62               	goto	l710
+   656     0760                     u250:
+   657     0760                     l708:
+   658     0760  3001               	movlw	1
+   659     0761  00F2               	movwf	_read_button$97
+   660     0762                     l710:
+   661     0762  0870               	movf	read_button@up,w
+   662     0763  0084               	movwf	4
+   663     0764  0872               	movf	_read_button$97,w
+   664     0765  1D03               	btfss	3,2
+   665     0766  2F68               	goto	u261
+   666     0767  2F6A               	goto	u260
+   667     0768                     u261:
+   668     0768  3001               	movlw	1
+   669     0769  2F6B               	goto	u270
+   670     076A                     u260:
+   671     076A  3000               	movlw	0
+   672     076B                     u270:
+   673     076B  1383               	bcf	3,7	;select IRP bank0
+   674     076C  0080               	movwf	0
+   675     076D                     l712:
+   676                           
+   677                           ;main.c: 51:     *menu = (menu_mem != menu_read && PORTBbits.RB1 == 0);
+   678     076D  01F3               	clrf	_read_button$98
+   679     076E                     l714:
+   680     076E  0821               	movf	read_button@menu_mem,w
+   681     076F  0675               	xorwf	read_button@menu_read,w
+   682     0770  1903               	skipnz
+   683     0771  2F73               	goto	u281
+   684     0772  2F74               	goto	u280
+   685     0773                     u281:
+   686     0773  2F7A               	goto	l720
+   687     0774                     u280:
+   688     0774                     l716:
+   689     0774  1886               	btfsc	6,1	;volatile
+   690     0775  2F77               	goto	u291
+   691     0776  2F78               	goto	u290
+   692     0777                     u291:
+   693     0777  2F7A               	goto	l720
+   694     0778                     u290:
+   695     0778                     l718:
+   696     0778  3001               	movlw	1
+   697     0779  00F3               	movwf	_read_button$98
+   698     077A                     l720:
+   699     077A  0871               	movf	read_button@menu,w
+   700     077B  0084               	movwf	4
+   701     077C  0873               	movf	_read_button$98,w
+   702     077D  1D03               	btfss	3,2
+   703     077E  2F80               	goto	u301
+   704     077F  2F82               	goto	u300
+   705     0780                     u301:
+   706     0780  3001               	movlw	1
+   707     0781  2F83               	goto	u310
+   708     0782                     u300:
+   709     0782  3000               	movlw	0
+   710     0783                     u310:
+   711     0783  0080               	movwf	0
+   712     0784                     l722:
+   713                           
+   714                           ;main.c: 53:     up_mem = up_read;
+   715     0784  0874               	movf	read_button@up_read,w
+   716     0785  1D03               	btfss	3,2
+   717     0786  2F88               	goto	u321
+   718     0787  2F8A               	goto	u320
+   719     0788                     u321:
+   720     0788  3001               	movlw	1
+   721     0789  2F8B               	goto	u330
+   722     078A                     u320:
+   723     078A  3000               	movlw	0
+   724     078B                     u330:
+   725     078B  00A2               	movwf	read_button@up_mem
+   726     078C                     l724:
+   727                           
+   728                           ;main.c: 54:     menu_mem = menu_read;
+   729     078C  0875               	movf	read_button@menu_read,w
+   730     078D  1D03               	btfss	3,2
+   731     078E  2F90               	goto	u341
+   732     078F  2F92               	goto	u340
+   733     0790                     u341:
+   734     0790  3001               	movlw	1
+   735     0791  2F93               	goto	u350
+   736     0792                     u340:
+   737     0792  3000               	movlw	0
+   738     0793                     u350:
+   739     0793  00A1               	movwf	read_button@menu_mem
+   740     0794                     l48:
+   741     0794  0008               	return
+   742     0795                     __end_of_read_button:
+   743                           
+   744                           	psect	text3
+   745     0711                     __ptext3:	
+   746 ;; *************** function _chenillard *****************
+   747 ;; Defined at:
+   748 ;;		line 61 in file "main.c"
+   749 ;; Parameters:    Size  Location     Type
+   750 ;;  right           1    wreg     _Bool 
+   751 ;; Auto vars:     Size  Location     Type
+   752 ;;  right           1    1[COMMON] _Bool 
+   753 ;; Return value:  Size  Location     Type
+   754 ;;                  1    wreg      void 
+   755 ;; Registers used:
+   756 ;;		wreg, status,2, status,0
+   757 ;; Tracked objects:
+   758 ;;		On entry : 0/0
+   759 ;;		On exit  : 0/0
+   760 ;;		Unchanged: 0/0
+   761 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   762 ;;      Params:         0       0       0       0       0
+   763 ;;      Locals:         1       0       0       0       0
+   764 ;;      Temps:          1       0       0       0       0
+   765 ;;      Totals:         2       0       0       0       0
+   766 ;;Total ram usage:        2 bytes
+   767 ;; Hardware stack levels used: 1
+   768 ;; This function calls:
+   769 ;;		Nothing
+   770 ;; This function is called by:
+   771 ;;		_main
+   772 ;; This function uses a non-reentrant model
+   773 ;;
+   774                           
+   775     0711                     _chenillard:	
+   776                           ;psect for function _chenillard
+   777                           
+   778                           
+   779                           ;incstack = 0
+   780                           ; Regs used in _chenillard: [wreg+status,2+status,0]
+   781                           ;chenillard@right stored from wreg
+   782     0711  00F1               	movwf	chenillard@right
+   783     0712                     l726:
+   784                           
+   785                           ;main.c: 62:     const uint8_t MAX_CHENILLARD = 0x80;;main.c: 63:     const uint8_t MIN_
+      +                          CHENILLARD = 0x01;;main.c: 65:     static uint8_t chenillard = 0;;main.c: 66:     static
+      +                           _Bool max = 0;;main.c: 68:     TRISD = 0x00;
+   786     0712  1683               	bsf	3,5	;RP0=1, select bank1
+   787     0713  1303               	bcf	3,6	;RP1=0, select bank1
+   788     0714  0188               	clrf	8	;volatile
+   789     0715                     l728:
+   790                           
+   791                           ;main.c: 69:     if (right == 1) {
+   792     0715  0371               	decf	chenillard@right,w
+   793     0716  1D03               	btfss	3,2
+   794     0717  2F19               	goto	u361
+   795     0718  2F1A               	goto	u360
+   796     0719                     u361:
+   797     0719  2F33               	goto	l742
+   798     071A                     u360:
+   799     071A                     l730:
+   800                           
+   801                           ;main.c: 70:         if (chenillard == MAX_CHENILLARD) {
+   802     071A  3080               	movlw	128
+   803     071B  067D               	xorwf	chenillard@chenillard,w
+   804     071C  1D03               	btfss	3,2
+   805     071D  2F1F               	goto	u371
+   806     071E  2F20               	goto	u370
+   807     071F                     u371:
+   808     071F  2F24               	goto	l734
+   809     0720                     u370:
+   810     0720                     l732:
+   811                           
+   812                           ;main.c: 71:             max = 1;
+   813     0720  3001               	movlw	1
+   814     0721  1283               	bcf	3,5	;RP0=0, select bank0
+   815     0722  1303               	bcf	3,6	;RP1=0, select bank0
+   816     0723  00A0               	movwf	chenillard@max
+   817     0724                     l734:
+   818                           
+   819                           ;main.c: 73:         if (max) {
+   820     0724  1283               	bcf	3,5	;RP0=0, select bank0
+   821     0725  0820               	movf	chenillard@max,w
+   822     0726  1903               	btfsc	3,2
+   823     0727  2F29               	goto	u381
+   824     0728  2F2A               	goto	u380
+   825     0729                     u381:
+   826     0729  2F2E               	goto	l740
+   827     072A                     u380:
+   828     072A                     l736:
+   829                           
+   830                           ;main.c: 74:             chenillard = MIN_CHENILLARD;
+   831     072A  3001               	movlw	1
+   832     072B  00FD               	movwf	chenillard@chenillard
+   833     072C                     l738:
+   834                           
+   835                           ;main.c: 75:             max = 0;
+   836     072C  01A0               	clrf	chenillard@max
+   837                           
+   838                           ;main.c: 76:         } else {
+   839     072D  2F4A               	goto	l754
+   840     072E                     l740:
+   841                           
+   842                           ;main.c: 77:             chenillard = chenillard << 1;
+   843     072E  087D               	movf	chenillard@chenillard,w
+   844     072F  00F0               	movwf	??_chenillard
+   845     0730  0770               	addwf	??_chenillard,w
+   846     0731  00FD               	movwf	chenillard@chenillard
+   847     0732  2F4A               	goto	l754
+   848     0733                     l742:
+   849                           
+   850                           ;main.c: 80:         if (chenillard == MIN_CHENILLARD) {
+   851     0733  037D               	decf	chenillard@chenillard,w
+   852     0734  1D03               	btfss	3,2
+   853     0735  2F37               	goto	u391
+   854     0736  2F38               	goto	u390
+   855     0737                     u391:
+   856     0737  2F3C               	goto	l746
+   857     0738                     u390:
+   858     0738                     l744:
+   859                           
+   860                           ;main.c: 81:             max = 1;
+   861     0738  3001               	movlw	1
+   862     0739  1283               	bcf	3,5	;RP0=0, select bank0
+   863     073A  1303               	bcf	3,6	;RP1=0, select bank0
+   864     073B  00A0               	movwf	chenillard@max
+   865     073C                     l746:
+   866                           
+   867                           ;main.c: 83:         if (max) {
+   868     073C  1283               	bcf	3,5	;RP0=0, select bank0
+   869     073D  0820               	movf	chenillard@max,w
+   870     073E  1903               	btfsc	3,2
+   871     073F  2F41               	goto	u401
+   872     0740  2F42               	goto	u400
+   873     0741                     u401:
+   874     0741  2F45               	goto	l752
+   875     0742                     u400:
+   876     0742                     l748:
+   877                           
+   878                           ;main.c: 84:             chenillard = MAX_CHENILLARD;
+   879     0742  3080               	movlw	128
+   880     0743  00FD               	movwf	chenillard@chenillard
+   881     0744  2F2C               	goto	l738
+   882     0745                     l752:
+   883                           
+   884                           ;main.c: 87:             chenillard = chenillard >> 1;
+   885     0745  087D               	movf	chenillard@chenillard,w
+   886     0746  00F0               	movwf	??_chenillard
+   887     0747  1003               	clrc
+   888     0748  0C70               	rrf	??_chenillard,w
+   889     0749  00FD               	movwf	chenillard@chenillard
+   890     074A                     l754:
+   891                           
+   892                           ;main.c: 90:     PORTD = chenillard;
+   893     074A  087D               	movf	chenillard@chenillard,w
+   894     074B  0088               	movwf	8	;volatile
+   895     074C                     l70:
+   896     074C  0008               	return
+   897     074D                     __end_of_chenillard:
+   898     0002                     ___latbits      equ	2
+   899     007E                     btemp           set	126	;btemp
+   900     007E                     wtemp0          set	126
 
 Data Sizes:
     Strings     0
     Constant    2
     Data        1
-    BSS         3
+    BSS         5
     Persistent  0
     Stack       0
 
 Auto Spaces:
     Space          Size  Autos    Used
-    COMMON           14     10      14
-    BANK0            80      0       0
+    COMMON           14     13      14
+    BANK0            80      3       8
     BANK1            80      0       0
     BANK3            96      0       0
     BANK2            96      0       0
 
 Pointer List with Targets:
 
-    None.
+    read_button@menu	PTR _Bool  size(1) Largest target is 1
+		 -> main@menu(BANK0[1]), 
+
+    read_button@up	PTR _Bool  size(1) Largest target is 1
+		 -> main@up(BANK0[1]), 
+
+    read_switch@switchs	PTR unsigned char  size(1) Largest target is 1
+		 -> main@switchs(BANK0[1]), 
+
 
 Critical Paths under _main in COMMON
 
-    _main->_chenillard
+    _main->_read_button
 
 Critical Paths under _main in BANK0
 
@@ -558,11 +970,20 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
  ---------------------------------------------------------------------------------
- (0) _main                                                 9     5      4      17
-                                              2 COMMON     8     4      4
+ (0) _main                                                10     6      4     443
+                                              6 COMMON     7     3      4
+                                              0 BANK0      3     3      0
                          _chenillard
+                        _read_button
+                        _read_switch
  ---------------------------------------------------------------------------------
- (1) _chenillard                                           2     2      0      15
+ (1) _read_switch                                          1     0      1      23
+                                              0 COMMON     1     0      1
+ ---------------------------------------------------------------------------------
+ (1) _read_button                                          6     4      2     184
+                                              0 COMMON     6     4      2
+ ---------------------------------------------------------------------------------
+ (1) _chenillard                                           2     2      0      29
                                               0 COMMON     2     2      0
  ---------------------------------------------------------------------------------
  Estimated maximum stack depth 1
@@ -572,6 +993,8 @@ Call Graph Tables:
 
  _main (ROOT)
    _chenillard
+   _read_button
+   _read_switch
 
 Address spaces:
 Name               Size   Autos  Total    Usage
@@ -581,40 +1004,69 @@ BANK2               96      0       0      0.0%
 BITBANK2            96      0       0      0.0%
 BANK1               80      0       0      0.0%
 BITBANK1            80      0       0      0.0%
-BANK0               80      0       0      0.0%
+BANK0               80      3       8     10.0%
 BITBANK0            80      0       0      0.0%
-COMMON              14     10      14    100.0%
+COMMON              14     13      14    100.0%
 BITCOMMON           14      0       0      0.0%
-DATA                 0      0      14      0.0%
+DATA                 0      0      22      0.0%
 STACK                0      0       0      0.0%
 
 
 Microchip Technology PIC Macro Assembler V3.00 build 20241204225717 
-Symbol Table                                                                                   Fri Apr 04 14:59:40 2025
+Symbol Table                                                                                   Fri Apr 04 15:31:58 2025
 
-                               pc 0002                                l17 07B8                                l36 07F2  
-                              u10 07C4                                u11 07C3                                u20 07CA  
-                              u21 07C9                                u30 07D1                                u31 07D0  
-                              u40 07DF                                u41 07DE                                u50 07E6  
-                              u51 07E5                                fsr 0004                               l600 07E1  
-                             l602 07E6                               l606 07E9                               l608 07EE  
-                             l580 07BC                               l590 07D1                               l582 07BF  
-                             l592 07D3                               l584 07C4                               l594 07D5  
-                             l586 07CA                               l588 07CC                               l596 07DA  
-                             l598 07DF                               l870 07AB                               l866 07A4  
-                             l868 07A5                               u747 07B1                              _main 07A4  
-                            btemp 007E                              start 0000                   chenillard@right 0071  
-                           ?_main 0072                             _PORTD 0008                             _TRISD 0088  
+                               pc 0002                                l31 07BF                                l51 0710  
+                              l70 074C                                l48 0794                                fsr 0004  
+                             l700 074D                               l710 0762                               l702 0755  
+                             l720 077A                               l712 076D                               l704 0756  
+                             l730 071A                               l722 0784                               l714 076E  
+                             l706 075C                               l740 072E                               l732 0720  
+                             l724 078C                               l716 0774                               l708 0760  
+                             l734 0724                               l742 0733                               l726 0712  
+                             l718 0778                               l752 0745                               l744 0738  
+                             l736 072A                               l728 0715                               l760 079A  
+                             l746 073C                               l754 074A                               l738 072C  
+                             l770 07B7                               l762 079E                               l748 0742  
+                             l756 0709                               l780 07D4                               l772 07C4  
+                             l764 07A0                               l774 07C6                               l782 07E2  
+                             l766 07A9                               l758 0795                               l784 07E9  
+                             l776 07CC                               l768 07B1                               l778 07CE  
+                             u300 0782                               u301 0780                               u310 0783  
+                             u400 0742                               u320 078A                               u240 075C  
+                             u401 0741                               u321 0788                               u241 075B  
+                             u330 078B                               u250 0760                               u410 07B1  
+                             u251 075F                               u411 07B0                               u340 0792  
+                             u260 076A                               u420 07B7                               u341 0790  
+                             u261 0768                               u421 07B6                               u350 0793  
+                             u270 076B                               u430 07BD                               u431 07BB  
+                             u360 071A                               u280 0774                               u440 07BE  
+                             u361 0719                               u281 0773                               u370 0720  
+                             u290 0778                               u450 07C4                               u371 071F  
+                             u291 0777                               u451 07C3                               u380 072A  
+                             u460 07CC                               u381 0729                               u461 07CB  
+                             u390 0738                               u391 0737                               u477 07DA  
+                             fsr0 0004                               indf 0000                              _main 0795  
+                            btemp 007E                              start 0000                       main@switchs 0024  
+                 chenillard@right 0071                             ?_main 0076                             _PORTC 0007  
+                           _PORTD 0008                             _TRISB 0086                             _TRISC 0087  
+                           _TRISD 0088                      ?_read_button 0070                      ?_read_switch 0070  
                            pclath 000A                             status 0003                             wtemp0 007E  
-                 __initialization 07F3                      __end_of_main 07BB                            ??_main 0076  
-__end_ofchenillard@MAX_CHENILLARD 000B                      __pdataCOMMON 007D           __end_of__initialization 07FC  
-                  __pcstackCOMMON 0070                        _chenillard 07BB                        __pmaintext 07A4  
-                      __stringtab 0003  __end_ofchenillard@MIN_CHENILLARD 000A                           __ptext1 07BB  
-            end_of_initialization 07FC                       ?_chenillard 0070                     chenillard@max 007A  
-                   __pidataCOMMON 07A3               start_initialization 07F3                       __pbssCOMMON 007A  
-                       ___latbits 0002                         __pstrings 0003                      ??_chenillard 0070  
-        chenillard@MAX_CHENILLARD 000A                       __stringbase 0008                         main@right 007C  
-                       main@speed 007D                __end_of_chenillard 07F3                __end_of__stringtab 0009  
-                        main@argc 0072                          main@argv 0074                          main@menu 0079  
-                       stringcode 0003          chenillard@MIN_CHENILLARD 0009                          stringdir 0003  
-                        stringtab 0003              chenillard@chenillard 007B  
+                 __initialization 07F1                      __end_of_main 07F1                            ??_main 007A  
+__end_ofchenillard@MAX_CHENILLARD 000B                            main@up 0025           __end_of__initialization 07FC  
+                  __pcstackCOMMON 0070                      __pidataBANK0 0708                        __pbssBANK0 0020  
+                      _chenillard 0711                        __pmaintext 0795                 read_button@up_mem 0022  
+                      __stringtab 0003               read_button@menu_mem 0021  __end_ofchenillard@MIN_CHENILLARD 000A  
+                         __ptext1 0709                           __ptext2 074D                           __ptext3 0711  
+            end_of_initialization 07FC                       ?_chenillard 0070                         _PORTBbits 0006  
+                   chenillard@max 0020               start_initialization 07F1                       __pdataBANK0 0027  
+                     __pbssCOMMON 007D                         ___latbits 0002                     __pcstackBANK0 0024  
+                   ??_read_button 0072                     ??_read_switch 0071                read_switch@switchs 0070  
+                       __pstrings 0003                    _read_button$97 0072                    _read_button$98 0073  
+              read_button@up_read 0074               __end_of_read_button 0795               __end_of_read_switch 0711  
+                    ??_chenillard 0070          chenillard@MAX_CHENILLARD 000A                       __stringbase 0008  
+            read_button@menu_read 0075                         main@right 0023                         main@speed 0027  
+              __end_of_chenillard 074D                __end_of__stringtab 0009                   read_button@menu 0071  
+                     _read_button 074D                       _read_switch 0709                          main@argc 0076  
+                        main@argv 0078                          main@menu 0026                         stringcode 0003  
+        chenillard@MIN_CHENILLARD 0009                     read_button@up 0070                          stringdir 0003  
+                        stringtab 0003              chenillard@chenillard 007D  

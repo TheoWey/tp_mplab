@@ -23,6 +23,8 @@ extern "C" {
     
     void chenillard(bool right);
     void read_button(bool *up, bool *menu);
+    void read_switch(uint8_t *switchs);
+    
 
 #ifdef	__cplusplus
 }

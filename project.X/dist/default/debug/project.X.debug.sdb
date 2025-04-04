@@ -3,47 +3,89 @@
 [d edition pro ]
 [d chip 16F877A ]
 [d frameptr 0 ]
-"43 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\fltol.c
-[v ___fltol __fltol `(l  1 e 4 0 ]
 "10 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
-"8 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\sprcmul.c
-[v ___flmul __flmul `(d  1 e 4 0 ]
-"15 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\Umul16.c
-[v ___wmul __wmul `(ui  1 e 2 0 ]
 "4 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
-"10 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\xxtofl.c
-[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
 "6 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\pic\__eeprom.c
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
 "12 A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
 [v _main main `(i  1 e 2 0 ]
-"21
+"45
+[v _read_button read_button `(v  1 e 1 0 ]
+"57
+[v _read_switch read_switch `(v  1 e 1 0 ]
+"61
 [v _chenillard chenillard `(v  1 e 1 0 ]
-"340 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h
+[s S47 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"233 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h
+[u S56 . 1 `S47 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES56  1 e 1 @6 ]
+"278
+[v _PORTC PORTC `VEuc  1 e 1 @7 ]
+"340
 [v _PORTD PORTD `VEuc  1 e 1 @8 ]
+"1375
+[v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"1437
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
 "1499
 [v _TRISD TRISD `VEuc  1 e 1 @136 ]
 "12 A:\OneDrive - Association Cesi Viacesi mail\micro\tp_mplab\project.X\main.c
 [v _main main `(i  1 e 2 0 ]
 {
 "15
-[v main@menu menu `a  1 a 1 9 ]
-"19
+[v main@menu menu `a  1 a 1 2 ]
+[v main@up up `a  1 a 1 1 ]
+"16
+[v main@switchs switchs `uc  1 a 1 0 ]
+"13
+[v main@right right `a  1 s 1 right ]
+"14
+[v main@speed speed `uc  1 s 1 speed ]
+"43
 } 0
-"21
+"57
+[v _read_switch read_switch `(v  1 e 1 0 ]
+{
+[v read_switch@switchs switchs `*.4uc  1 p 1 0 ]
+"59
+} 0
+"45
+[v _read_button read_button `(v  1 e 1 0 ]
+{
+"48
+[v read_button@menu_read menu_read `uc  1 a 1 5 ]
+"47
+[v read_button@up_read up_read `uc  1 a 1 4 ]
+"45
+[v read_button@up up `*.4a  1 p 1 0 ]
+[v read_button@menu menu `*.4a  1 p 1 1 ]
+"46
+[v read_button@up_mem up_mem `a  1 s 1 up_mem ]
+[v read_button@menu_mem menu_mem `a  1 s 1 menu_mem ]
+"55
+} 0
+"61
 [v _chenillard chenillard `(v  1 e 1 0 ]
 {
 [v chenillard@right right `a  1 p 1 wreg ]
 [v chenillard@right right `a  1 p 1 wreg ]
-"25
+"65
 [v chenillard@chenillard chenillard `uc  1 s 1 chenillard ]
-"26
+"66
 [v chenillard@max max `a  1 s 1 max ]
-"28
+"68
 [v chenillard@right right `a  1 p 1 1 ]
-"51
+"91
 } 0

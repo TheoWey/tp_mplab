@@ -1,18 +1,44 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
-"23 ./main.h
-[; ;./main.h: 23:     void chenillard(_Bool right);
+"1375 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1375: extern volatile unsigned char TRISB __attribute__((address(0x086)));
+[v _TRISB `Vuc ~T0 @X0 0 e@134 ]
+"1437
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1437: extern volatile unsigned char TRISC __attribute__((address(0x087)));
+[v _TRISC `Vuc ~T0 @X0 0 e@135 ]
+"25 ./main.h
+[; ;./main.h: 25:     void read_button(_Bool *up, _Bool *menu);
+[v _read_button `(v ~T0 @X0 0 ef2`*a`*a ]
+"24
+[; ;./main.h: 24:     void chenillard(_Bool right);
 [v _chenillard `(v ~T0 @X0 0 ef1`a ]
 [v F164 `(v ~T0 @X0 1 tf1`ul ]
 "20 C:\Program Files\Microchip\xc8\v3.00\pic\include/builtins.h
 [v __delay `JF164 ~T0 @X0 0 e ]
 [p i __delay ]
-"1499 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1499: extern volatile unsigned char TRISD __attribute__((address(0x088)));
-[v _TRISD `Vuc ~T0 @X0 0 e@136 ]
-"340
+"26 ./main.h
+[; ;./main.h: 26:     void read_switch(uint8_t *switchs);
+[v _read_switch `(v ~T0 @X0 0 ef1`*uc ]
+"340 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 340: extern volatile unsigned char PORTD __attribute__((address(0x008)));
 [v _PORTD `Vuc ~T0 @X0 0 e@8 ]
+"222
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 222:     struct {
+[s S12 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S12 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+"221
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 221: typedef union {
+[u S11 `S12 1 ]
+[n S11 . . ]
+"233
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 233: extern volatile PORTBbits_t PORTBbits __attribute__((address(0x006)));
+[v _PORTBbits `VS11 ~T0 @X0 0 e@6 ]
+"278
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 278: extern volatile unsigned char PORTC __attribute__((address(0x007)));
+[v _PORTC `Vuc ~T0 @X0 0 e@7 ]
+"1499
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1499: extern volatile unsigned char TRISD __attribute__((address(0x088)));
+[v _TRISD `Vuc ~T0 @X0 0 e@136 ]
 "54 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -204,14 +230,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "13
 [; ;main.c: 13:     static _Bool right = 0;
-[v F1332 `a ~T0 @X0 1 s right ]
-[i F1332
+[v F1337 `a ~T0 @X0 1 s right ]
+[i F1337
 -> -> 0 `i `a
 ]
 "14
 [; ;main.c: 14:     static uint8_t speed = 1;
-[v F1333 `uc ~T0 @X0 1 s speed ]
-[i F1333
+[v F1338 `uc ~T0 @X0 1 s speed ]
+[i F1338
 -> -> 1 `i `uc
 ]
 "15
@@ -221,139 +247,268 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _menu `a ~T0 @X0 1 a ]
 [e = _menu -> -> 0 `i `a ]
 "16
-[; ;main.c: 16:     chenillard(right);
-[e ( _chenillard (1 F1332 ]
-"17
-[; ;main.c: 17:     _delay((unsigned long)((100 * speed)*(20000000/4000.0)));
-[e ( __delay (1 -> * -> * -> 100 `i -> F1333 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-"18
-[; ;main.c: 18:     return (0);
+[; ;main.c: 16:     uint8_t switchs = 0;
+[v _switchs `uc ~T0 @X0 1 a ]
+[e = _switchs -> -> 0 `i `uc ]
+"19
+[; ;main.c: 19:     TRISB = 0x01;
+[e = _TRISB -> -> 1 `i `uc ]
+"20
+[; ;main.c: 20:     TRISC = 0x01;
+[e = _TRISC -> -> 1 `i `uc ]
+"21
+[; ;main.c: 21:     while (1) {
+[e :U 103 ]
+{
+"22
+[; ;main.c: 22:         read_button(&up, &menu);
+[e ( _read_button (2 , &U _up &U _menu ]
+"23
+[; ;main.c: 23:         if (up == menu) {
+[e $ ! == -> _up `i -> _menu `i 105  ]
+{
+"24
+[; ;main.c: 24:             if (up != menu) {
+[e $ ! != -> _up `i -> _menu `i 106  ]
+{
+"25
+[; ;main.c: 25:                 right = !right;
+[e = F1337 -> -> ! != -> F1337 `i -> 0 `i `i `a ]
+"26
+[; ;main.c: 26:             }
+}
+[e :U 106 ]
+"27
+[; ;main.c: 27:             if (menu) {
+[e $ ! != -> _menu `i -> 0 `i 107  ]
+{
+"28
+[; ;main.c: 28:                 speed += 1;
+[e =+ F1338 -> -> 1 `i `uc ]
+"29
+[; ;main.c: 29:                 if (speed > 10) {
+[e $ ! > -> F1338 `i -> 10 `i 108  ]
+{
+"30
+[; ;main.c: 30:                     speed = 1;
+[e = F1338 -> -> 1 `i `uc ]
+"31
+[; ;main.c: 31:                 }
+}
+[e :U 108 ]
+"32
+[; ;main.c: 32:             }
+}
+[e :U 107 ]
+"33
+[; ;main.c: 33:             chenillard(right);
+[e ( _chenillard (1 F1337 ]
+"35
+[; ;main.c: 35:             _delay((unsigned long)((100)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"36
+[; ;main.c: 36:         } else {
+}
+[e $U 109  ]
+[e :U 105 ]
+{
+"37
+[; ;main.c: 37:             read_switch(&switchs);
+[e ( _read_switch (1 &U _switchs ]
+"38
+[; ;main.c: 38:             PORTD = switchs;
+[e = _PORTD _switchs ]
+"39
+[; ;main.c: 39:         }
+}
+[e :U 109 ]
+"40
+[; ;main.c: 40:     }
+}
+[e :U 102 ]
+[e $U 103  ]
+[e :U 104 ]
+"42
+[; ;main.c: 42:     return (0);
 [e ) -> 0 `i ]
 [e $UE 101  ]
-"19
-[; ;main.c: 19: }
+"43
+[; ;main.c: 43: }
 [e :UE 101 ]
 }
-"21
-[; ;main.c: 21: void chenillard(_Bool right) {
+"45
+[; ;main.c: 45: void read_button(_Bool *up, _Bool *menu) {
+[v _read_button `(v ~T0 @X0 1 ef2`*a`*a ]
+{
+[e :U _read_button ]
+[v _up `*a ~T0 @X0 1 r1 ]
+[v _menu `*a ~T0 @X0 1 r2 ]
+[f ]
+"46
+[; ;main.c: 46:     static _Bool up_mem, menu_mem = 0;
+[v F1345 `a ~T0 @X0 1 s up_mem ]
+[v F1346 `a ~T0 @X0 1 s menu_mem ]
+[i F1346
+-> -> 0 `i `a
+]
+"47
+[; ;main.c: 47:     uint8_t up_read = PORTBbits.RB0;
+[v _up_read `uc ~T0 @X0 1 a ]
+[e = _up_read . . _PORTBbits 0 0 ]
+"48
+[; ;main.c: 48:     uint8_t menu_read = PORTBbits.RB1;
+[v _menu_read `uc ~T0 @X0 1 a ]
+[e = _menu_read . . _PORTBbits 0 1 ]
+"50
+[; ;main.c: 50:     *up = (up_mem != up_read && PORTBbits.RB0 == 0);
+[e = *U _up -> -> && != -> F1345 `i -> _up_read `i == -> . . _PORTBbits 0 0 `i -> 0 `i `i `a ]
+"51
+[; ;main.c: 51:     *menu = (menu_mem != menu_read && PORTBbits.RB1 == 0);
+[e = *U _menu -> -> && != -> F1346 `i -> _menu_read `i == -> . . _PORTBbits 0 1 `i -> 0 `i `i `a ]
+"53
+[; ;main.c: 53:     up_mem = up_read;
+[e = F1345 -> _up_read `a ]
+"54
+[; ;main.c: 54:     menu_mem = menu_read;
+[e = F1346 -> _menu_read `a ]
+"55
+[; ;main.c: 55: }
+[e :UE 110 ]
+}
+"57
+[; ;main.c: 57: void read_switch(uint8_t *switchs) {
+[v _read_switch `(v ~T0 @X0 1 ef1`*uc ]
+{
+[e :U _read_switch ]
+[v _switchs `*uc ~T0 @X0 1 r1 ]
+[f ]
+"58
+[; ;main.c: 58:     *switchs = PORTC;
+[e = *U _switchs _PORTC ]
+"59
+[; ;main.c: 59: }
+[e :UE 111 ]
+}
+"61
+[; ;main.c: 61: void chenillard(_Bool right) {
 [v _chenillard `(v ~T0 @X0 1 ef1`a ]
 {
 [e :U _chenillard ]
 [v _right `a ~T0 @X0 1 r1 ]
 [f ]
-"22
-[; ;main.c: 22:     const uint8_t MAX_CHENILLARD = 0x80;
-[v F1338 `Cuc ~T0 @X0 1 s MAX_CHENILLARD ]
-[i F1338
+"62
+[; ;main.c: 62:     const uint8_t MAX_CHENILLARD = 0x80;
+[v F1353 `Cuc ~T0 @X0 1 s MAX_CHENILLARD ]
+[i F1353
 -> -> 128 `i `uc
 ]
-"23
-[; ;main.c: 23:     const uint8_t MIN_CHENILLARD = 0x01;
-[v F1339 `Cuc ~T0 @X0 1 s MIN_CHENILLARD ]
-[i F1339
+"63
+[; ;main.c: 63:     const uint8_t MIN_CHENILLARD = 0x01;
+[v F1354 `Cuc ~T0 @X0 1 s MIN_CHENILLARD ]
+[i F1354
 -> -> 1 `i `uc
 ]
-"25
-[; ;main.c: 25:     static uint8_t chenillard = 0;
-[v F1340 `uc ~T0 @X0 1 s chenillard ]
-[i F1340
+"65
+[; ;main.c: 65:     static uint8_t chenillard = 0;
+[v F1355 `uc ~T0 @X0 1 s chenillard ]
+[i F1355
 -> -> 0 `i `uc
 ]
-"26
-[; ;main.c: 26:     static _Bool max = 0;
-[v F1341 `a ~T0 @X0 1 s max ]
-[i F1341
+"66
+[; ;main.c: 66:     static _Bool max = 0;
+[v F1356 `a ~T0 @X0 1 s max ]
+[i F1356
 -> -> 0 `i `a
 ]
-"28
-[; ;main.c: 28:     TRISD = 0x00;
+"68
+[; ;main.c: 68:     TRISD = 0x00;
 [e = _TRISD -> -> 0 `i `uc ]
-"29
-[; ;main.c: 29:     if (right == 1) {
-[e $ ! == -> _right `i -> 1 `i 103  ]
+"69
+[; ;main.c: 69:     if (right == 1) {
+[e $ ! == -> _right `i -> 1 `i 113  ]
 {
-"30
-[; ;main.c: 30:         if (chenillard == MAX_CHENILLARD) {
-[e $ ! == -> F1340 `i -> F1338 `i 104  ]
+"70
+[; ;main.c: 70:         if (chenillard == MAX_CHENILLARD) {
+[e $ ! == -> F1355 `i -> F1353 `i 114  ]
 {
-"31
-[; ;main.c: 31:             max = 1;
-[e = F1341 -> -> 1 `i `a ]
-"32
-[; ;main.c: 32:         }
+"71
+[; ;main.c: 71:             max = 1;
+[e = F1356 -> -> 1 `i `a ]
+"72
+[; ;main.c: 72:         }
 }
-[e :U 104 ]
-"33
-[; ;main.c: 33:         if (max) {
-[e $ ! != -> F1341 `i -> 0 `i 105  ]
+[e :U 114 ]
+"73
+[; ;main.c: 73:         if (max) {
+[e $ ! != -> F1356 `i -> 0 `i 115  ]
 {
-"34
-[; ;main.c: 34:             chenillard = MIN_CHENILLARD;
-[e = F1340 F1339 ]
-"35
-[; ;main.c: 35:             max = 0;
-[e = F1341 -> -> 0 `i `a ]
-"36
-[; ;main.c: 36:         } else {
+"74
+[; ;main.c: 74:             chenillard = MIN_CHENILLARD;
+[e = F1355 F1354 ]
+"75
+[; ;main.c: 75:             max = 0;
+[e = F1356 -> -> 0 `i `a ]
+"76
+[; ;main.c: 76:         } else {
 }
-[e $U 106  ]
-[e :U 105 ]
+[e $U 116  ]
+[e :U 115 ]
 {
-"37
-[; ;main.c: 37:             chenillard = chenillard << 1;
-[e = F1340 -> << -> F1340 `i -> 1 `i `uc ]
-"38
-[; ;main.c: 38:         }
+"77
+[; ;main.c: 77:             chenillard = chenillard << 1;
+[e = F1355 -> << -> F1355 `i -> 1 `i `uc ]
+"78
+[; ;main.c: 78:         }
 }
-[e :U 106 ]
-"39
-[; ;main.c: 39:     } else {
+[e :U 116 ]
+"79
+[; ;main.c: 79:     } else {
 }
-[e $U 107  ]
-[e :U 103 ]
+[e $U 117  ]
+[e :U 113 ]
 {
-"40
-[; ;main.c: 40:         if (chenillard == MIN_CHENILLARD) {
-[e $ ! == -> F1340 `i -> F1339 `i 108  ]
+"80
+[; ;main.c: 80:         if (chenillard == MIN_CHENILLARD) {
+[e $ ! == -> F1355 `i -> F1354 `i 118  ]
 {
-"41
-[; ;main.c: 41:             max = 1;
-[e = F1341 -> -> 1 `i `a ]
-"42
-[; ;main.c: 42:         }
+"81
+[; ;main.c: 81:             max = 1;
+[e = F1356 -> -> 1 `i `a ]
+"82
+[; ;main.c: 82:         }
 }
-[e :U 108 ]
-"43
-[; ;main.c: 43:         if (max) {
-[e $ ! != -> F1341 `i -> 0 `i 109  ]
+[e :U 118 ]
+"83
+[; ;main.c: 83:         if (max) {
+[e $ ! != -> F1356 `i -> 0 `i 119  ]
 {
-"44
-[; ;main.c: 44:             chenillard = MAX_CHENILLARD;
-[e = F1340 F1338 ]
-"45
-[; ;main.c: 45:             max = 0;
-[e = F1341 -> -> 0 `i `a ]
-"46
-[; ;main.c: 46:         } else {
+"84
+[; ;main.c: 84:             chenillard = MAX_CHENILLARD;
+[e = F1355 F1353 ]
+"85
+[; ;main.c: 85:             max = 0;
+[e = F1356 -> -> 0 `i `a ]
+"86
+[; ;main.c: 86:         } else {
 }
-[e $U 110  ]
-[e :U 109 ]
+[e $U 120  ]
+[e :U 119 ]
 {
-"47
-[; ;main.c: 47:             chenillard = chenillard >> 1;
-[e = F1340 -> >> -> F1340 `i -> 1 `i `uc ]
-"48
-[; ;main.c: 48:         }
+"87
+[; ;main.c: 87:             chenillard = chenillard >> 1;
+[e = F1355 -> >> -> F1355 `i -> 1 `i `uc ]
+"88
+[; ;main.c: 88:         }
 }
-[e :U 110 ]
-"49
-[; ;main.c: 49:     }
+[e :U 120 ]
+"89
+[; ;main.c: 89:     }
 }
-[e :U 107 ]
-"50
-[; ;main.c: 50:     PORTD = chenillard;
-[e = _PORTD F1340 ]
-"51
-[; ;main.c: 51: }
-[e :UE 102 ]
+[e :U 117 ]
+"90
+[; ;main.c: 90:     PORTD = chenillard;
+[e = _PORTD F1355 ]
+"91
+[; ;main.c: 91: }
+[e :UE 112 ]
 }

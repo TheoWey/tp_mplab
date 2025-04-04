@@ -2066,8 +2066,10 @@ char *ctermid(char *);
 
 char *tempnam(const char *, const char *);
 # 11 "./main.h" 2
-# 23 "./main.h"
+# 24 "./main.h"
     void chenillard(_Bool right);
+    void read_button(_Bool *up, _Bool *menu);
+    void read_switch(uint8_t *switchs);
 # 9 "main.c" 2
 
 
@@ -2076,9 +2078,49 @@ int main(int argc, char **argv) {
     static _Bool right = 0;
     static uint8_t speed = 1;
     _Bool up = 0, menu = 0;
-    chenillard(right);
-    _delay((unsigned long)((100 * speed)*(20000000/4000.0)));
+    uint8_t switchs = 0;
+
+
+    TRISB = 0x01;
+    TRISC = 0x01;
+    while (1) {
+        read_button(&up, &menu);
+        if (up == menu) {
+            if (up != menu) {
+                right = !right;
+            }
+            if (menu) {
+                speed += 1;
+                if (speed > 10) {
+                    speed = 1;
+                }
+            }
+            chenillard(right);
+
+            _delay((unsigned long)((100)*(20000000/4000.0)));
+        } else {
+            read_switch(&switchs);
+            PORTD = switchs;
+        }
+    }
+
     return (0);
+}
+
+void read_button(_Bool *up, _Bool *menu) {
+    static _Bool up_mem, menu_mem = 0;
+    uint8_t up_read = PORTBbits.RB0;
+    uint8_t menu_read = PORTBbits.RB1;
+
+    *up = (up_mem != up_read && PORTBbits.RB0 == 0);
+    *menu = (menu_mem != menu_read && PORTBbits.RB1 == 0);
+
+    up_mem = up_read;
+    menu_mem = menu_read;
+}
+
+void read_switch(uint8_t *switchs) {
+    *switchs = PORTC;
 }
 
 void chenillard(_Bool right) {
