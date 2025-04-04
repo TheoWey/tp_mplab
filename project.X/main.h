@@ -14,6 +14,7 @@
 #ifndef MAIN_H
 #define	MAIN_H
 
+
 #ifdef	__cplusplus
 extern "C" {
 #endif
@@ -21,6 +22,7 @@ extern "C" {
     #define _XTAL_FREQ 20000000
     
     void chenillard(bool right);
+    void read_button(bool *up, bool *menu);
 
 #ifdef	__cplusplus
 }
