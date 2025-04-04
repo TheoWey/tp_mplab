@@ -4,6 +4,12 @@
  *
  * Created on 4 avril 2025, 14:53
  */
+#include <xc.h>
+#include <stdbool.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #ifndef MAIN_H
 #define	MAIN_H
@@ -12,8 +18,9 @@
 extern "C" {
 #endif
 
-
-
+    #define _XTAL_FREQ 20000000
+    
+    void chenillard(bool right);
 
 #ifdef	__cplusplus
 }
