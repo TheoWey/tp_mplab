@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   main.h
  * Author: weyth
  *
@@ -6,18 +6,14 @@
  */
 
 #ifndef MAIN_H
-#define	MAIN_H
+#define MAIN_H
 
-#ifdef	__cplusplus
+#ifdef __cplusplus
 extern "C" {
 #endif
 
-
-
-
-#ifdef	__cplusplus
+#ifdef __cplusplus
 }
 #endif
 
-#endif	/* MAIN_H */
-
+#endif /* MAIN_H */
